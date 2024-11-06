@@ -1,0 +1,157 @@
+.client{
+    margin-top: -180px;
+    background-image: url('/images/0.jpeg') !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 60px 20px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 160vh; /* Full screen on larger devices */
+    margin-bottom: 40px;
+}
+
+.client-text {
+    max-width: 250px;
+    background-color: rgba(167, 248, 228, 0.5);
+    border-radius: 20px;
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.buttons button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    background-color:  rgba(167, 248, 228, 0.5);
+    color:black;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: 0.15s;
+}
+
+.buttons button:hover{
+    padding: 20px 40px;
+}
+
+
+
+@media (max-width: 768px) {
+    .hero {
+        height: 70vh; /* Adjust height for smaller screens */
+        padding: 40px 15px; /* Adjust padding */
+    }
+}
+
+@media (max-width: 480px) {
+    .client {
+        height: 60vh; /* Adjust height for very small screens */
+        padding: 30px 10px; /* Adjust padding */
+    }
+    .client-text h1{
+        font-size: 0.5rem;
+    }
+    
+    .client-text p{
+        font-size: 0.5rem;
+    }
+}
+.client-text {
+    max-width: 300px;
+    background-color: rgba(167, 248, 228, 0.5);
+    border-radius: 20px;
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    color: white;
+    
+    }
+
+.client-text h1{
+    font-size: x-large;
+}
+
+
+
+
+ /* Style for the card container */
+ .card-container {
+    
+    display: flex;
+    justify-content: center; /* Center the cards horizontally */
+    align-items: center;
+    gap: 15px; /* Add spacing between cards */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    margin: 0 auto; /* Center the container itself */
+    max-width: 1200px;
+    margin-bottom: 40px;
+    
+}
+
+/* Styling for each card */
+.card-custom {
+    flex: 1 1 30%;
+    max-width: 350px;
+    border-radius: 25px;
+    text-align: center;
+    overflow: hidden;
+    background-color:rgba(167, 248, 228, 0.5);
+    transition: transform 0.3s ease;
+    padding:0px;
+}
+.card-img-top{
+    border-radius: 25px 25px 0px 0px;
+    
+}
+
+/* Style for the middle card to make it larger and overlay */
+.card-middle {
+    position: relative;
+    z-index: 1;
+    transform: scale(1.1);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0.8;
+}
+
+/* Card titles */
+.card-title {
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* Adjust opacity background for card footers */
+.card-footer-custom {
+    background-color: rgba(112, 128, 144, 0.6); /* semi-transparent */
+    color: white;
+    font-weight: bold;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+    .card-container {
+        flex-direction: column;
+    }
+    .card-middle {
+        transform: scale(1);
+    }
+}
+
+/* Freelancing heading */
+.heading1{
+    color: white;
+    background-color: rgba(34, 137, 147,0.5);
+    border-radius: 20px;
+    border: none;
+    padding: 20px 40px 20px 40px;
+    opacity: 0.7;
+}

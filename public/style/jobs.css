@@ -1,0 +1,75 @@
+     /* General Styles */
+     body, ul, li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        font-family: Arial, sans-serif;
+    }
+    
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+
+    /* Freelancer Cards Section */
+    .freelancers-section {
+        padding: 20px;
+        text-align: center;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+    
+    /* Grid layout for cards */
+    .freelancer-grid {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        justify-items: center;
+    }
+    
+    /* Card styling */
+    .freelancer-card {
+        background-color: rgba(34, 137, 147,0.5);
+        border-radius: 10px;
+        overflow: hidden;
+        text-align: center;
+        width: 100%;
+        max-width: 300px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+    
+    .freelancer-card img {
+        width: 100%;
+        height: auto;
+        border-bottom: 2px solid #00bcd4;
+    }
+    
+    .freelancer-card p {
+        margin: 10px 0;
+        font-weight: bold;
+    }
+    
+    /* Hover effect */
+    .freelancer-card:hover {
+        transform: scale(1.05);
+    }
+    
+    /* See more link */
+    .see-more {
+        display: inline-block;
+        margin-top: 20px;
+        color: #00bcd4;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    
+    .see-more:hover {
+        text-decoration: underline;
+    }
+
