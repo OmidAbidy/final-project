@@ -19,14 +19,12 @@
 
 
         <div class="logo">
-            Karnema <!-- Replace with actual logo -->
+            <a href="{{route('home')}}" style="text-decoration: none; color:black">Karnema</a> <!-- Replace with actual logo -->
         </div>
         <!-- Slant Background -->
         <div class="slant">
             <h1 class="display-4 text-center mb-4"
                 style="margin-left: 80px;">Welcome back!</h1>
-
-
         </div>
 
         <!-- Login Form Section -->
@@ -55,7 +53,7 @@
                 <button type="submit" class="btn btn-custom w-100">Login</button>
             </form>
             <div class="text-center footer-links mt-3">
-                <p>Create an account <a href="#">Sign In</a></p>
+                <p>Create an account <a href="{{route('register')}}">Sign In</a></p>
                 <p><a href="#">Forgot Password</a></p>
             </div>
         </div>

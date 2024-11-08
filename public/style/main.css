@@ -129,6 +129,8 @@ body {
    
 }
 
+
+
 .platform-card {
     background-color: rgba(34, 137, 147,0.5);
     padding: 20px;
@@ -174,29 +176,3 @@ img{
     border-radius: 8px;
 }
 
-/* Footer */
-footer {
-    background-color: #555151;
-    color: #7aeaf4;
-    padding: 20px;
-    text-align: center;
-    
-}
-
-.contact-info {
-    margin-bottom: 20px;
-}
-
-.contact-info p, .footer-links a {
-    margin: 5px 0;
-}
-
-.footer-links a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-.footer-links a:hover {
-    text-decoration: underline;
-}

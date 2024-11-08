@@ -164,7 +164,8 @@
     </div>
 </div>
 
-<center><a href="">See More ...</h1></center><br>
+<center><a href="" style="text-decoration: none;
+                color:black;">See More ...</a></center><br>
 
 
 </div>

@@ -19,7 +19,7 @@
 
 
         <div class="logo">
-            Karnema <!-- Replace with actual logo -->
+        <a href="{{route('home')}}" style="text-decoration: none; color:black">Karnema</a> <!-- Replace with actual logo -->
         </div>
         <!-- Slant Background -->
         <div class="slant">
@@ -64,7 +64,7 @@
                 <button type="submit" class="btn btn-custom w-100">Sign In</button>
             </form>
             <div class="text-center footer-links mt-3">
-                <p>Already have an account <a href="#"> login In <i class="fas fa-sign-in-alt"></i></a> 
+                <p>Already have an account <a href="{{route('login')}}"> login In <i class="fas fa-sign-in-alt"></i></a> 
             </p>
                 
             </div>

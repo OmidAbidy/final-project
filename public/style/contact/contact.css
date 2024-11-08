@@ -1,0 +1,161 @@
+ /* Background gradient */
+ body {
+    background: linear-gradient(550deg, #34a5a5 20%, #5bc0be 70%, #a2d5c6);
+    min-height: 100vh;
+    color: #333;
+    padding-bottom: 200px;
+}
+
+/* Navbar styling */
+/* Containers styling */
+.main-section {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.content-container, .side-container {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 40px;
+    color: #020202;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.side-container {
+  
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    max-width: 400px;
+}
+
+/* Profile picture placeholder */
+.profile-pic {
+    width: 180px;
+    height: 180px;
+    background-color: #34a5a5;
+    opacity: 0.8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+.profile-button {
+    color: #09383e;
+    background-color: #34a5a5;
+    
+    border-radius:25px ;
+    border: 1px solid #09383e;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: 0.3s;
+    margin: 15px;
+}
+
+.profile-button:hover {
+    background-color: #95c1c3;
+    color: #030202;
+    border: 1px solid #fffdfd;
+    text-decoration: none;
+}
+
+/* Tools section */
+.tools {
+    text-align: center;
+    margin-top: 30px;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    bottom: 0;
+    position: fixed;
+}
+
+.icons .icon1 {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 5px;
+    
+}
+.icons{
+    justify-content: space-evenly;
+    color: red;
+}
+
+
+/* Tools container at the bottom */
+.tools {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    padding: 10px 0;
+    text-align: center;
+    color: #333;
+}
+
+.icon1 {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 5px;
+    transition: 0.15s;
+
+}
+.icon1:hover{
+    cursor: pointer;
+    padding: 30px;
+    
+    margin: 0px -10px 0px -10px;
+}
+
+
+
+
+.buttons-div{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.know-btn{
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    color: black;
+    
+}
+.tool-btn{
+    color: #000000;
+    background-color: #34a5a5;
+    border-radius:25px ;
+    padding: 10px 40px;
+    border: none;
+    font-size: 20px;
+}

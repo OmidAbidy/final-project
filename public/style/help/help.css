@@ -1,0 +1,142 @@
+  /* Navbar styling */
+  .navbar-custom {
+    background-color: transparent;
+    padding: 10px;
+    display: flex;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: #000;
+}
+
+.navbar .left-icon,
+.navbar .right-icons i {
+    font-size: 1.5rem;
+    color: #000;
+}
+
+.navbar .right-icons i {
+    margin-left: 15px;
+}
+
+/* Center title styling */
+.navbar {
+    flex-grow: 1;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.center-title{
+    flex-grow: 1;
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+}
+/* Hide icons on small screens */
+@media (max-width: 576px) {
+    .navbar .left-icon, .navbar .right-icons i {
+        font-size: 1.2rem;
+    }
+    .center-title {
+        font-size: 18px;
+    }
+    .fa-home{
+        visibility: hidden;
+    }
+
+    body{
+        padding-bottom: 100px;
+    }
+}
+
+
+
+
+
+
+/* Background gradient for the whole page */
+body {
+    background: linear-gradient(55deg, #92e3e3 20%, #3fcabf 70%, #a2d5c6);
+    color: #333;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    
+    align-items: center;
+    justify-content: center;
+}
+
+/* Main container styling */
+.container {
+    background: rgba(34, 137, 147,0.5);
+    border-radius: 15px;
+    
+    color: #000000;
+    margin-top: 100px;
+}
+
+/* Title styling */
+h1 {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Section headers */
+h3 {
+    font-weight: bold;
+}
+
+/* Form input styling */
+.form-control {
+    background: rgba(255, 255, 255, 0.2);
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* Submit button styling */
+.btn-submit {
+    background-color: #14d4d1;
+    color: #000;
+    border: 2px solid #333;
+    font-weight: bold;
+    transition: 0.3s;
+    max-width: 400px;
+    width: 100px;
+    
+}
+
+.btn-submit:hover {
+    background-color: #333;
+    color: #fff;
+    border: 2px solid  #14d4d1;
+}
+
+/* Contact icon styling */
+.contact-info i {
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .contact-info {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+}
+
+.form-group{
+    max-width: 400px;
+    min-width: 100px;
+}
+
+.form-btn{
+    display: flex;
+    justify-content: center;
+    margin-right:90px;
+}
+
