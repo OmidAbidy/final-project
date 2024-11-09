@@ -1,0 +1,65 @@
+ /* Main container */
+ body {
+    background-color: #e0f7f7;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Navbar styling */
+.navbar-custom {
+    background-color: transparent;
+    padding: 10px;
+}
+
+/* Center title styling */
+.center-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #000;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Project container */
+.project-container {
+    background-color: #b6e1e1;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 30px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+/* Image styling */
+.project-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Dropdown and status button styling */
+.status-dropdown {
+    background-color: #fff;
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-weight: bold;
+    color: #333;
+    
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .navbar .center-title {
+        font-size: 1rem;
+    }
+}
+
+/* Navbar toggler icon fix */
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+

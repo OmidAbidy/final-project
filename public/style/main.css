@@ -149,6 +149,7 @@ body {
     border-radius: 25px;
     padding: 10px;
     overflow: hidden;
+    height: 300px;
 }
 
 img{
@@ -176,3 +177,7 @@ img{
     border-radius: 8px;
 }
 
+.card-img-top{
+    height: 150px;
+    
+}

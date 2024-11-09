@@ -48,3 +48,11 @@ Route::get('register',function(){
 Route::get('help', function(){
     return view('home.help');
 })->name('help');
+
+Route::get('project', function(){
+    return view('JobProMan.project');
+})->name('project');
+
+Route::get('Back' , function(){
+    return redirect()->back();
+})->name('back');
