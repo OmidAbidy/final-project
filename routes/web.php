@@ -1,58 +1,40 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\FreelancerController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\JobController;
-use Faker\Guesser\Name;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/', function () {
+    return view('home.index');
+})->name('home');
+Route::get('job', function () {
+    return view('JobProMan.jobs');
+})->name('jobs');
 
+Route::get('freeanlancer', function () {
+    return view('JobProMan.freelancers');
+})->name('freelancers');
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('contacts', function () {
+    return view('home.contact');
+})->name('contact');
 
-
-
-Route::get('client', function () {
-    return view('user.client');
-});
-
-Route::get('freelancer', function () {
-    return view('user.freelancer');
-});
-
-
-Route::get('Category',[CategoryController::class, 'index'])->name('category');
-Route::get('Contact',[ContactController::class, 'index'])->name('contact');
-
-
-
-
-Route::get('Freelancers', [FreelancerController::class, 'index'])->name('freelancers');
-
-
-
-
-Route::get('job', [JobController::class, 'index'])->name('jobs');
-
-
-Route::get('login',function(){
-    return view('auth.login');
-})->name('login');
-
-Route::get('register',function(){
-    return view('auth.register');
-})->name('register');
-
-Route::get('help', function(){
+Route::get('help', function () {
     return view('home.help');
 })->name('help');
 
-Route::get('project', function(){
-    return view('JobProMan.project');
-})->name('project');
+Route::get('/dashboard', function () {
+    return view('admin.dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('Back' , function(){
-    return redirect()->back();
-})->name('back');
+Route::get('Aclients', function () {
+    return view('admin.client');
+})->middleware(['auth', 'verified'])->name('Aclient');
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';

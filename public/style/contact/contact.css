@@ -1,8 +1,8 @@
  /* Background gradient */
  body {
-    background: linear-gradient(550deg, #34a5a5 20%, #5bc0be 70%, #a2d5c6);
+    background: linear-gradient(550deg, #b1dcdc 20%, #c5dcdc 70%, #a2d5c6);
     min-height: 100vh;
-    color: #333;
+    color: white;
     padding-bottom: 200px;
 }
 
@@ -16,10 +16,10 @@
 }
 
 .content-container, .side-container {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(64, 148, 127, 0.9);
     border-radius: 15px;
     padding: 40px;
-    color: #020202;
+    color: white;
 }
 
 .content-container {
@@ -41,7 +41,7 @@
 .profile-pic {
     width: 180px;
     height: 180px;
-    background-color: #34a5a5;
+    background-color: rgba(64, 148, 127, 0.9);
     opacity: 0.8;
     border-radius: 50%;
     display: flex;
@@ -55,7 +55,7 @@
 /* Buttons */
 .profile-button {
     color: #09383e;
-    background-color: #34a5a5;
+    background-color: rgb(86, 178, 155);
     
     border-radius:25px ;
     border: 1px solid #09383e;
@@ -100,7 +100,7 @@
 }
 .icons{
     justify-content: space-evenly;
-    color: red;
+    color: rgb(255, 225, 0);
 }
 
 
@@ -153,7 +153,7 @@
 }
 .tool-btn{
     color: #000000;
-    background-color: #34a5a5;
+    background-color: rgba(64, 148, 127, 0.9);
     border-radius:25px ;
     padding: 10px 40px;
     border: none;

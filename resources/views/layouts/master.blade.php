@@ -43,7 +43,7 @@
                             <li><a class="dropdown-item" href="#">Pashto</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('category')}}">Category</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Category</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('contact')}}">Contact</a></li>
                 </ul>
             </div>

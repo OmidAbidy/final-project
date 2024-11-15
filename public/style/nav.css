@@ -10,44 +10,40 @@
 .navbar-brand {
    font-family: Arial, sans-serif;
    font-weight: bold;
-   font-size: 24px;
-   color: black; /* Dark teal color for logo text */
+   /* Dark teal color for logo text */
    display: flex;
    align-items: center;
-   padding: 5px 15px;
    border-radius: 15px;
-   background-color:rgba(34, 137, 147,0.5);
+   background-color:rgba(64, 148, 127, 0.9);
    transition: 0.15s;
-   
+   padding: 8px 20px;
+   color: white;
+}
+.navbar-brand:hover{
+   padding: 8px 40px;
+   color: white;
 }
 
-.navbar-brand:hover{
-   padding: 10px 60px;
-   margin-left: -30px;
-   margin-right: -30px;
-   margin-top: -2px;
-   margin-bottom: -2px;
-}
 
 .navbar-nav{
    padding: 8px 15px;
    border-radius: 15px;
-   background-color: rgba(34, 137, 147,0.5);
+   background-color: rgba(64, 148, 127, 0.7);
    color: white;
 }
 
 /* Navbar links styling */
 .navbar-nav .nav-link {
-   color: black;
+   color: white;
    font-weight: bold;
-   margin: 0.50px;
+   margin: 0.20px;
    font-size: 16px;
    border-radius: 10px;
    padding: 5px 8px;
 }
 
 .navbar-nav .nav-link:hover {
-   background-color: rgba(34, 137, 147,0.5);
+   background-color: rgba(64, 148, 127, 0.7);
 }
 
 /* Search icon styling */
@@ -56,7 +52,7 @@
    align-items: center;
    padding: 5px 10px;
    border-radius: 10px;
-   background-color: rgba(34, 137, 147,0.5);
+   background-color: rgba(64, 148, 127, 0.7);
    cursor: pointer;
    transition: 0.15s;
    padding: 15px 35px;
@@ -70,7 +66,7 @@
 }
 
 .search-button-div i {
-   color: #063a54;
+   color: white;
    font-size: 18px;
 }
 
@@ -91,12 +87,12 @@
 
 /* Style for the navbar toggler */
 .navbar-toggler {
-   background-color: rgba(34, 137, 147,0.5);
+   background-color: rgba(64, 148, 127, 0.7);
    border: none;
-   color: #0c2a39;
+   color:white;
 }
 
 .navbar-toggler-icon {
-   color: #0c2a39;
+   color: white;
    filter: invert(1); /* Makes the toggler icon white */
 }

@@ -7,13 +7,13 @@
 
 .navbar-brand,
 .navbar-nav .nav-link {
-    color: #000;
+    color: #ffffff;
 }
 
 .navbar .left-icon,
 .navbar .right-icons i {
     font-size: 1.5rem;
-    color: #000;
+    color: #ffffff;
 }
 
 .navbar .right-icons i {
@@ -58,8 +58,8 @@
 
 /* Background gradient for the whole page */
 body {
-    background: linear-gradient(55deg, #92e3e3 20%, #3fcabf 70%, #a2d5c6);
-    color: #333;
+    background: linear-gradient(55deg, #217a61 20%, #3fcabf 70%, #a2d5c6);
+    color: #fdfdfd;
     font-family: Arial, sans-serif;
     min-height: 100vh;
     
@@ -69,10 +69,10 @@ body {
 
 /* Main container styling */
 .container {
-    background: rgba(34, 137, 147,0.5);
+    background: rgba(64, 148, 127, 0.9);
     border-radius: 15px;
     
-    color: #000000;
+    color: #ffffff;
     margin-top: 100px;
 }
 
@@ -99,9 +99,9 @@ h3 {
 
 /* Submit button styling */
 .btn-submit {
-    background-color: #14d4d1;
-    color: #000;
-    border: 2px solid #333;
+    background-color: #157270;
+    color: #ffffff;
+    border: 0px solid #333;
     font-weight: bold;
     transition: 0.3s;
     max-width: 400px;
@@ -112,7 +112,7 @@ h3 {
 .btn-submit:hover {
     background-color: #333;
     color: #fff;
-    border: 2px solid  #14d4d1;
+    border: 2px solid  #ffffff;
 }
 
 /* Contact icon styling */

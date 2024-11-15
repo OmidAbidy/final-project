@@ -12,21 +12,29 @@
     </div>
     <div class="buttons">
         <button><a href="{{route('register')}}"
-        style="text-decoration: none;
-        color: black;">Sign Up</a></button>
+        style="text-decoration: none;">Sign Up</a></button>
         <button><a href="{{route('login')}}"
-        style="text-decoration: none;
-        color: black;">Login In</a></button>
+        style="text-decoration: none;">Login In</a></button>
     </div>
 </section>
 
 <!-- About Section -->
 <section class="about">
-    <h2>What is Karnema?</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+    
     <div class="about-images">
-        <img src="{{asset('images/3.jpeg')}}" alt="Person working">
+        <div style="display: flex; flex: 1; flex-direction:column; padding:20px;  justify-content:center;">
+            <h2>What is Karnema?</h2>
+        </br>
+            <p>Karnema is the place where you can find talents for your jobs <br>
+            also for the freelancers which they are during freelancing they are<br>
+            studying it is the right area to earn money and help their self to <br>
+            hone their skills
+            </p> 
+        </div>
+        <div style="display: flex; flex: 1; align-items:center; justify-content:center;">
         <img src="{{asset('images/4.jpeg')}}" alt="Person working">
+        </div>
+        
     </div>
 </section>
 
@@ -106,15 +114,9 @@
 
             </div>
         </div>
-    </div>
 
 
-</div>
-</div>
-
-
-<div class="container my-4">
-    <!-- Repeated container -->
+        <!-- Repeated container -->
     <div class="row">
         <!-- Second Row of Cards -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
@@ -131,7 +133,7 @@
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Card Title 6</h5>
+                    <h5 class="card-title">Information system</h5>
                     <p class="card-text">computer sciencetest</p>
                 </div>
                 <img src="/images/a6.jfif" class="card-img-top" alt="Card Image">
@@ -141,7 +143,7 @@
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Card Title 7</h5>
+                    <h5 class="card-title">Database adminstration</h5>
                     <p class="card-text">computer sciencetest</p>
 
                 </div>
@@ -152,7 +154,7 @@
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Card Title 8</h5>
+                    <h5 class="card-title">Office</h5>
                     <p class="card-text">computer sciencetest</p>
 
                 </div>
@@ -162,7 +164,12 @@
         </div>
 
     </div>
+    </div>
+
+
 </div>
+</div>
+
 
 <center><a href="" style="text-decoration: none;
                 color:black;">See More ...</a></center><br>
