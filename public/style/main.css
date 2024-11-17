@@ -7,7 +7,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    color: #333;
+    color: black;
 }
 
 
@@ -50,12 +50,12 @@ body {
 }
 .hero-text {
     max-width: 300px;
-    background-color:rgba(64, 148, 127, 0.7);
+    background-color:rgba(177,219,223,0.2);
     border-radius: 20px;
     display: flex;
     padding: 20px;
     flex-direction: column;
-    color: white;
+    color: black;
 
 
 
@@ -81,8 +81,8 @@ body {
     padding: 10px 20px;
     margin-right: 10px;
     border: none;
-    background-color:  rgba(64, 148, 127, 0.9);
-    color: white;
+    background-color: rgba(177,219,223,0.7);
+    color: black;
     cursor: pointer;
     border-radius: 20px;
     transition: 0.15s;
@@ -132,7 +132,7 @@ body {
 
 
 .platform-card {
-    background-color: rgba(64, 148, 127, 0.9);
+    background-color:rgba(177,219,223,0.7);
     padding: 20px;
     border-radius: 8px;
     width: 100%;
@@ -145,7 +145,7 @@ body {
 }
 
 .card{
-    background-color:rgba(64, 148, 127, 0.9);
+    background-color:rgba(177,219,223,0.7);
     border-radius: 25px;
     padding: 10px;
     overflow: hidden;
@@ -170,7 +170,7 @@ img{
 }
 
 .project-card {
-    background-color: rgba(167, 248, 228, 0.5);
+    background-color: rgba(177,219,223,0.7);
     width: 200px;
     padding: 20px;
     border-radius: 8px;

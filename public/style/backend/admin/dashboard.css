@@ -1,0 +1,105 @@
+         /* General styles */
+         body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(72, 187, 197, 0.7);
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(14, 135, 146, 0.7);
+        }
+
+        .sidebar .underline {
+            border-bottom: 2px solid #ffffff33;
+            margin: 0 10px;
+        }
+
+        .sidebar .nav-link {
+            padding: 15px 20px;
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+
+        .sidebar .nav-link:hover {
+            background-color: #089f8a;
+            text-decoration: none;
+        }
+
+        .content {
+            margin-left: 250px;
+            width: calc(100% - 250px);
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1030;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(44, 137, 145, 0.7);
+            border-bottom: 1px solid #ddd;
+        }
+
+        .dropdown-menu {
+            right: 0;
+            left: auto;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+            }
+
+            .content {
+                margin-left: 200px;
+                width: calc(100% - 200px);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .sidebar {
+                position: absolute;
+                width: 100%;
+                height: auto;
+                top: 0;
+                left: -100%;
+                transition: left 0.3s ease;
+            }
+
+            .sidebar.active {
+                left: 0;
+            }
+
+            .content {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .navbar {
+                justify-content: space-between;
+            }
+
+            .navbar-toggler {
+                display: inline-block;
+            }
+        }
