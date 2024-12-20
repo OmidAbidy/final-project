@@ -1,6 +1,6 @@
  /* Background gradient */
  body {
-    background: linear-gradient(550deg, #b1dcdc 20%, #c5dcdc 70%, #a2d5c6);
+    background: linear-gradient(550deg, #2f7a7a 20%, #c5dcdc 70%, #a2d5c6);
     min-height: 100vh;
     color: white;
     padding-bottom: 200px;

@@ -27,6 +27,18 @@ Route::get('/dashboard', function () {
     return view('backend.admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('freelancers', function(){
+    return view('backend.user.freelancer');
+})->name('freelancer');
+
+Route::get('project', function(){
+    return view('frontend.JobProMan.project');
+})->name('project');
+
+Route::get('about', function(){
+    return view('frontend.home.about');
+})->name('about');
+
 
 
 
@@ -34,9 +46,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('backend.admin.users', function(){return view('backend.admin.users');})->name('users');
-    Route::get('backend.admin.projects', function(){return view('backend.admin.projects');})->name('projects');
+    Route::get('backend.admin.users', function(){return view('backend.admin.user.users');})->name('users');
+    Route::get('backend.admin.projects', function(){return view('backend.admin.project.projects');})->name('projects');
     Route::get('backend.admin.settings', function(){return view('backend.admin.settings');})->name('settings');
+    Route::get('backend.admin.user.edit', function(){return view('backend.admin.user.edit');})->name('useredit');
+    Route::get('backend.admin.project.edit', function(){return view('backend.admin.project.edit');})->name('projectedit');
 });
 
 require __DIR__.'/auth.php';

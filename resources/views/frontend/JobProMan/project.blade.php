@@ -14,7 +14,7 @@
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-    <a href="{{route('back')}}" class="navbar-brand">
+    <a href="{{ url()->previous() }}" class="navbar-brand">
         <i class="fas fa-arrow-left"></i>
     </a>
     <div class="center-title">
@@ -27,9 +27,6 @@
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a href="{{route('home')}}" class="nav-link"><i class="fas fa-home"></i></a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link"><i class="fas fa-bars"></i></a>
             </li>
         </ul>
     </div>
@@ -44,6 +41,12 @@
          <div class="col-md-6">
            
             <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel orci ac mauris posuere faucibus.
+                Nullam gravida, sapien vel gravida suscipit, orci urna interdum velit, non posuere leo risus vel libero.
+                Curabitur fermentum sapien at dolor dignissim, eget fermentum neque aliquam.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel orci ac mauris posuere faucibus.
+                Nullam gravida, sapien vel gravida suscipit, orci urna interdum velit, non posuere leo risus vel libero.
+                Curabitur fermentum sapien at dolor dignissim, eget fermentum neque aliquam.
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel orci ac mauris posuere faucibus.
                 Nullam gravida, sapien vel gravida suscipit, orci urna interdum velit, non posuere leo risus vel libero.
                 Curabitur fermentum sapien at dolor dignissim, eget fermentum neque aliquam.

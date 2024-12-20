@@ -124,3 +124,38 @@
     box-shadow: none;
     border-color: #5a5a5a;
 }
+
+
+.toggle-password {
+    display: flex;
+    align-items: center;
+  }
+
+  
+
+
+/* after creating some design for login sign up and forget password inside the form */
+
+
+.footer-links a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #000000; /* Primary link color */
+    transition: color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .footer-links a:hover {
+    color: #000000; /* Darker shade for hover effect */
+    transform: scale(1.05); /* Slight zoom effect */
+  }
+  
+  .footer-links i {
+    margin-right: 8px; /* Add spacing between icon and text */
+    color:  rgba(34, 137, 147, 0.6); /* Icon color (green) */
+    transition: color 0.3s ease;
+  }
+  
+  .footer-links a:hover i {
+    color:  rgba(34, 137, 147, 0.6); /* Darker shade for icon on hover */
+  }
+  

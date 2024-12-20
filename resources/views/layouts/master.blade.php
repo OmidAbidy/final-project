@@ -12,10 +12,12 @@
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMvbR2cFlq1opq26zQHjU3vqGPZAm8zC0EmmA4N" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
-
+    
+    
     <link rel="stylesheet" href="{{asset('style/nav.css')}}">
     <link rel="stylesheet" href="{{asset('style/main.css')}}">
     @yield('links')
+    <link rel="stylesheet"  href="style/frontent/about.css">
 
     <link rel="stylesheet" href="/style/footer.css">
 </head>
@@ -33,7 +35,6 @@
                     <li class="nav-item"><a class="nav-link" href="{{route('home')}}">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('jobs')}}">Find Job</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('freelancers')}}">Find Freelancer</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Category</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('register')}}">Sign Up</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('login')}}">Login </a></li>
                 </ul>
@@ -83,7 +84,7 @@
                 Contact Us
             </div>
             <div>
-                <a href="#">About Us</a>
+                <a href="{{route('about')}}">About Us</a>
             </div>
             <div>
                 <a href="{{route('help')}}">Help and Support</a>
@@ -120,8 +121,9 @@
     <!-- Bootstrap JS with Popper (use the latest Bootstrap 5 version for smooth collapses) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>

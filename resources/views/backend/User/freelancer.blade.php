@@ -26,7 +26,10 @@
         <h1>Your trust is everything</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
     </div>
-        <button style="color: white;"> Contact</button>
+    <a href="{{route('contact')}}" class="text-decoration:none; ">
+    <button style="color: white;"> Contact</button>
+    </a>
+       
         
     </div>
 </section>
