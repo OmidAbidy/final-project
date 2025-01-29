@@ -3,7 +3,7 @@
 
 @section('content')
 
-
+@include('layouts.partials.header',['SignUp'=>'Sign Up', 'Login'=>'Login' ,'search'=>'']);
 <!-- Hero Section -->
 <section class="hero">
     <div class="hero-text">
@@ -19,13 +19,11 @@
                 style="text-decoration: none; color:black;">Login In</a></button>
     </div>
 </section>
-
 <!-- About Section -->
-<section class="about">
-
+<section class="about fade-in">
     <div class="about-images">
         <!-- Text Content with Icons -->
-        <div style="display: flex; flex: 1; flex-direction:column; padding:20px; justify-content:center;">
+        <div style="display: flex; flex: 1; flex-direction: column; padding: 20px; justify-content: center;">
             <h2>
                 <i class="fas fa-briefcase"></i> Work From Anywhere!
             </h2>
@@ -39,20 +37,16 @@
         </div>
 
         <!-- Image Content -->
-        <div style="display: flex; flex: 1; align-items:center; justify-content:center;">
-            <img src="{{ asset('images/3.jpeg') }}" alt="Person working">
+        <div style="display: flex; flex: 1; align-items: center; justify-content: center;">
+            <img src="{{ asset('images/3.jpeg') }}" alt="Person working" class="fade-in">
         </div>
     </div>
-
 </section>
 
-
-
-
 <!-- Platform Section -->
-<section class="platform">
+<section class="platform fade-in">
     <!-- Freelancer Platform Card -->
-    <div class="platform-card">
+    <div class="platform-card fade-in">
         <h3><i class="fas fa-user-tie" style="color: #007bff; font-size: 30px; margin-right: 10px;"></i> Freelancers Platform</h3>
         <p>
             What can a Freelancing Platform Do?
@@ -61,7 +55,7 @@
     </div>
 
     <!-- Client Platform Card -->
-    <div class="platform-card">
+    <div class="platform-card fade-in">
         <h3><i class="fas fa-briefcase" style="color: #28a745; font-size: 30px; margin-right: 10px;"></i> Clients Platform</h3>
         <p>
             What can a Client Do on a Freelancing Platform?
@@ -70,15 +64,12 @@
     </div>
 </section>
 
-
-<!-- photo Section -->
-<section class="about">
-
+<!-- Photo Section -->
+<section class="about fade-in">
     <div class="about-images">
-
         <!-- Image Section -->
         <div style="display: flex; flex: 1; align-items: center; justify-content: center;">
-            <img src="{{asset('images/4.jpeg')}}" alt="Person working" style="max-width: 100%; height: auto;">
+            <img src="{{ asset('images/4.jpeg') }}" alt="Person working" style="max-width: 100%; height: auto;" class="fade-in">
         </div>
 
         <!-- Text Section with Icon -->
@@ -91,7 +82,6 @@
                 right area to earn money and hone their skills.
             </p>
         </div>
-
     </div>
 </section>
 
@@ -108,22 +98,25 @@
     <div class="row">
         <!-- First Card -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-            <div class="card">
+            <a href="{{route('project')}}">
+                <div class="card">
 
-                <div class="card-body">
-                    <h5 class="card-title">Yahya</h5>
-                    <p class="card-text">Computer Science Test</p>
+                    <div class="card-body">
+                        <h5 class="card-title">Automation</h5>
+                        <p class="card-text">Automation Project</p>
+                    </div>
+                    <img src="/images/a1.jfif" class="card-img-top" alt="Card Image">
                 </div>
-                <img src="/images/a1.jfif" class="card-img-top" alt="Card Image">
+            
+            </a>
             </div>
-        </div>
         <!-- Second Card -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
             <div class="card">
 
                 <div class="card-body">
-                    <h5 class="card-title">Bashir Haidary</h5>
-                    <p class="card-text">Computer Science Test</p>
+                    <h5 class="card-title">Web Development</h5>
+                    <p class="card-text">A Simple web Devlopment project</p>
                 </div>
                 <img src="/images/a2.jfif" class="card-img-top" alt="Card Image">
             </div>

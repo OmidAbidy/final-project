@@ -4,7 +4,7 @@
 @section('content')
 
 
-
+@include('layouts.partials.header',['search' => 'Search','Login' => '', 'SignUp' => '']);
 <br>
 <center>
     <h1>Freelancers</h1>

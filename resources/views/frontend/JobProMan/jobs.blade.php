@@ -3,6 +3,8 @@
 @section('content')
 
 
+@include('layouts.partials.header',['search' => 'Search','Login' => null, 'SignUp' => null]);
+
 <br>
 <center>
     <h1>Jobs</h1>

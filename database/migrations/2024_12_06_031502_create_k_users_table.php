@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('password');
+            
             $table->string('user_type');  // client or freelancer
-            $table->text('profile_data'); 
+            $table->text('profile_data');
             $table->timestamps();
         });
     }

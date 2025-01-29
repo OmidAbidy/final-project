@@ -14,7 +14,7 @@
 <nav class="navbar navbar-expand navbar-custom">
     <!-- Back Icon -->
     <div class="left-icon">
-        <a href="#" class="navbar-brand">
+        <a href="{{ url()->previous() }}"  class="navbar-brand">
             <i class="fas fa-arrow-left"></i>
         </a>
     </div>
@@ -29,10 +29,7 @@
         <a href="{{route('home')}}" class="nav-link">
             <i class="fas fa-home"></i>
         </a>
-        <a href="#" class="nav-link">
-            <i class="fas fa-bars">
-            </i>
-        </a>
+       
     </div>
 </nav>
 

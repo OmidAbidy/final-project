@@ -1,35 +1,68 @@
- /* Main container */
- body {
+/* Main container */
+body {
     background-color: #e0f7f7;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     color: #333;
+    margin: 0;
+    padding: 0;
 }
 
 /* Navbar styling */
 .navbar-custom {
     background-color: transparent;
-    padding: 10px;
+    padding: 15px 10px;
+    position: relative;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar-custom:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Center title styling */
 .center-title {
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: #000;
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: color 0.3s ease;
+}
+
+.navbar-custom:hover .center-title {
+    color: #0d2641; /* Hover effect on title */
 }
 
 /* Project container */
 .project-container {
     background-color: #b6e1e1;
-    border-radius: 10px;
-    padding: 20px;
+    border-radius: 15px;
+    padding: 30px;
     margin-top: 30px;
-    align-items: center;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.project-container:hover {
+    transform: translateY(-10px); /* Smooth hover animation */
+}
+
+.project-container h3 {
+    font-size: 2rem;
+    color: #007bff;
+}
+
+.project-container p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
 }
 
 /* Image styling */
@@ -37,6 +70,11 @@
     width: 100%;
     height: auto;
     border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.project-image:hover {
+    transform: scale(1.05); /* Slight zoom effect */
 }
 
 /* Dropdown and status button styling */
@@ -47,13 +85,60 @@
     padding: 5px 10px;
     font-weight: bold;
     color: #333;
-    
+}
+
+/* Status button styling */
+.btn-status {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-status:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Dropdown styling for status */
+.dropdown-menu {
+    min-width: 120px;
+}
+
+.dropdown-item {
+    padding: 10px 15px;
+    color: #333;
+    font-weight: bold;
+}
+
+.dropdown-item:hover {
+    background-color: #007bff;
+    color: white;
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
     .navbar .center-title {
-        font-size: 1rem;
+        font-size: 1.2rem;
+        top: 10px;
+    }
+
+    /* Stack the project container items vertically */
+    .project-container {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .project-image {
+        margin-top: 20px;
+    }
+
+    .project-container h3 {
+        font-size: 1.8rem;
     }
 }
 
@@ -62,4 +147,18 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
+/* Additional animations */
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
 
+.btn-status {
+    animation: slideIn 0.5s ease-out;
+}

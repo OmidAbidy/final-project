@@ -3,6 +3,8 @@
 @section('content')
 <link rel="stylesheet" href="/style/clnt.css">
 
+@include('layouts.partials.header',['search' => 'Search','Login' => '', 'SignUp' => '']);
+
 <center>
     <button class="heading1">
         Freelancer

@@ -1,6 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
+
+@include('layouts.partials.header',['search' => 'Search','Login' => '', 'SignUp' => '']);
 <link rel="stylesheet" href="/style/clnt.css">
 <center><h1>Client</h1></center>
 <section class="client">

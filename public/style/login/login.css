@@ -1,5 +1,5 @@
-  /* Main layout */
-  .login-page {
+/* Main layout */
+.login-page {
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -26,6 +26,7 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Logo fixed at the top left */
 .logo {
     position: fixed;
     top: 20px;
@@ -37,11 +38,9 @@
     font-size: 1.5rem;
     font-weight: bold;
     color: black;
-    /* Dark color for contrast */
     text-transform: uppercase;
     font-family: Arial, sans-serif;
     z-index: 10;
-    /* Ensure it stays above other elements */
 }
 
 /* Centered login form */
@@ -50,22 +49,32 @@
     opacity: 0.8;
     padding: 80px 40px 80px 40px;
     border-radius: 10px;
-
     max-width: 400px;
     width: 100%;
     position: relative;
     z-index: 1;
     transition: 0.35s;
-    /* Above the slanted background */
 }
 
-.login-section:hover {
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .login-section {
+        padding: 40px 20px; /* Reduced padding for smaller screens */
+        max-width: 90%; /* Ensure the login form isn't too wide on small screens */
+    }
 
-    padding: 60px;
+    .slant {
+        clip-path: polygon(0 0, 100% 0, 20% 100%, 0% 100%); /* Adjusted for smaller screens */
+        width: 100%; /* Ensure slant background stretches fully */
+    }
 
+    .logo {
+        font-size: 1.2rem; /* Smaller font size for logo on mobile */
+        padding: 8px 16px; /* Adjust padding */
+    }
 }
 
-/* Form styling */
+/* General form control styling */
 .form-control {
     border: none;
     border-bottom: 2px solid gray;
@@ -78,6 +87,7 @@
     border-color: #5a5a5a;
 }
 
+/* Custom button styling */
 .btn-custom {
     background-color: #a8d5dd;
     border: none;
@@ -91,6 +101,7 @@
     background-color: #93c7d0;
 }
 
+/* Footer links styling */
 .footer-links {
     font-size: 0.9rem;
 }
@@ -104,14 +115,27 @@
     text-decoration: underline;
 }
 
-/* Responsive styling */
-@media (max-width: 768px) {
-    .slant {
-        clip-path: polygon(0 0, 100% 0, 20% 100%, 0% 100%);
+/* Footer links with icon hover effect */
+.footer-links a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #000000;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
 
-    }
+.footer-links a:hover {
+    color: #000000;
+    transform: scale(1.05);
+}
 
+.footer-links i {
+    margin-right: 8px;
+    color: rgba(34, 137, 147, 0.6);
+    transition: color 0.3s ease;
+}
 
+.footer-links a:hover i {
+    color: rgba(34, 137, 147, 0.6);
 }
 
 .input-group-text {
@@ -125,37 +149,8 @@
     border-color: #5a5a5a;
 }
 
-
+/* Password toggle */
 .toggle-password {
     display: flex;
     align-items: center;
-  }
-
-  
-
-
-/* after creating some design for login sign up and forget password inside the form */
-
-
-.footer-links a {
-    text-decoration: none;
-    font-weight: bold;
-    color: #000000; /* Primary link color */
-    transition: color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .footer-links a:hover {
-    color: #000000; /* Darker shade for hover effect */
-    transform: scale(1.05); /* Slight zoom effect */
-  }
-  
-  .footer-links i {
-    margin-right: 8px; /* Add spacing between icon and text */
-    color:  rgba(34, 137, 147, 0.6); /* Icon color (green) */
-    transition: color 0.3s ease;
-  }
-  
-  .footer-links a:hover i {
-    color:  rgba(34, 137, 147, 0.6); /* Darker shade for icon on hover */
-  }
-  
+}
