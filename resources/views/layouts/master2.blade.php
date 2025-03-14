@@ -11,11 +11,12 @@
   
   <!-- Custom styles -->
   <link rel="stylesheet" href="style/login/login.css">
-  
+  @yield('links')
   <!-- Latest Font Awesome version -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   
   <title>@yield('title') | {{config('app.name')}}</title>
+  
 </head>
 <body>
 

@@ -10,7 +10,7 @@
         <div class="card-body">
           <i class="fas fa-users stat-icon"></i>
           <h5>Total Users</h5>
-          <p class="display-6 fw-bold">150</p>
+          <p class="display-6 fw-bold">{{ \App\Models\User::count() }}</p>
         </div>
       </div>
     </div>

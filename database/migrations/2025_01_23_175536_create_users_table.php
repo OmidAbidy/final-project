@@ -17,18 +17,20 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('role', ['admin', 'client', 'freelancer']); // Changed from enum to string with default value
+            $table->string('profile_picture')->nullable(); // Add this line for the profile picture
             $table->rememberToken();
             $table->timestamps();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
+            $table->string('email')->index();  // Changed from primary to index for better compatibility
             $table->string('token');
             $table->timestamp('created_at')->nullable();
         });
 
         Schema::create('sessions', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->string('id', 255)->primary();
             $table->foreignId('user_id')->nullable()->index();
             $table->string('ip_address', 45)->nullable();
             $table->text('user_agent')->nullable();
@@ -46,4 +48,8 @@ return new class extends Migration
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
     }
-};
+}
+
+
+;
+

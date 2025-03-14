@@ -1,6 +1,12 @@
 @extends('layouts.master2')
 
+@section('title','Register')
+@section('links')
+<link rel="stylesheet" href="style/login/register.css">
+@endsection
+
 @section('content')
+
 <div class="login-page">
 
 
@@ -29,7 +35,7 @@
     <form action="{{ route('register') }}" method="POST">
       @csrf
 
-
+      <input type="hidden" name="role" id="role" value="{{ request()->query('role') }}">
       <div class="input-group mb-3">
         <span class="input-group-text"><i class="fas fa-user"></i></span>
         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Full Name" value="{{ old('name') }}" required>
@@ -85,4 +91,4 @@
 
 
 
-  @endsection
+@endsection

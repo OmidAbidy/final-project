@@ -21,6 +21,17 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'profile_picture', // or path to an image
+    ];
+
+     /**
+     * The attributes that should have default values.
+     *
+     * @var array<string, mixed>
+     */
+    protected $attributes = [
+        'role' => 'admin', // Default role
     ];
 
     /**
@@ -43,6 +54,9 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+
         ];
     }
+
+    
 }

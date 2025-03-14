@@ -3,14 +3,7 @@
 @section('content')
 <div class="login-page">
 
-
-  <!-- Logo Text -->
-  <div class="logo">
-    <a href="{{ route('home') }}" style="text-decoration: none; color:black;">
-      Karnema <!-- Replace this with the desired name -->
-    </a>
-  </div>
-
+  @include('components.logo')
   <!-- Slant Background -->
   <div class="slant">
     <h1 class="display-4 text-center mx-5">Welcome back!</h1>
@@ -53,11 +46,10 @@
     <div class="text-center footer-links mt-3"> 
     <!-- Sign Up Link -->
       <p>
-        <a href="{{ route('register') }}" class="link-custom">
+        <a href="{{ route('BReg') }}" class="link-custom">
           <i class="fas fa-user-plus"></i> Sign Up
         </a>
       </p>
-
       <!-- Forgot Password Link -->
       <p>
         <a href="{{ route('password.request') }}" class="link-custom">

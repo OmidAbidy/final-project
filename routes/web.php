@@ -1,56 +1,56 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
+use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Facades\Route;
-use Monolog\Handler\RotatingFileHandler;
 
-Route::get('/', function () {
-    return view('frontend.home.index');
-})->name('home');
-Route::get('job', function () {
-    return view('frontend.JobProMan.jobs');
-})->name('jobs');
+// Public Routes
+Route::view('/', 'frontend.home.index')->name('home');
+Route::view('job', 'frontend.JobProMan.jobs')->name('jobs');
+Route::view('freelancer', 'frontend.JobProMan.freelancers')->name('freelancers');
+Route::view('contacts', 'frontend.home.contact')->name('contact');
+Route::view('help', 'frontend.helpAbout.help')->name('help');
+Route::view('about', 'frontend.helpAbout.about')->name('about');
+Route::view('BReg', 'auth.BeforeReg')->name('BReg');
+Route::view('project', 'frontend.JobProMan.project')->name('project');
+Route::view('freelancers', 'backend.user.freelancer')->name('freelancer');
 
-Route::get('freeanlancer', function () {
-    return view('frontend.JobProMan.freelancers');
-})->name('freelancers');
+// Protected Routes (Requires Authentication)
+Route::middleware(['auth', 'verified'])->group(function () {
+    
+Route::view('myprofile', 'backend.profileManagement.freelancer')->name('myprofile');
+    // Dashboard
+    Route::view('/dashboard', 'backend.admin.dashboard')->name('dashboard');
 
-Route::get('contacts', function () {
-    return view('frontend.home.contact');
-})->name('contact');
+    // Admin Routes (Only for User Management & Settings)
+    Route::prefix('backend/admin')->name('admin.')->group(function () {
 
-Route::get('help', function () {
-    return view('frontend.home.help');
-})->name('help');
+        // User Management (Only Admin)
+        Route::middleware('can:isadmin')->group(function () {
+            Route::get('/users', [UserController::class, 'index'])->name('users');
+            Route::delete('/userDelete/{id}', [UserController::class, 'destroy'])->name('deleteUser');
 
-Route::get('/dashboard', function () {
-    return view('backend.admin.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+            // User Edit & Update
+            Route::get('user/edit/{id}', [UserController::class, 'edit'])->name('useredit');
+            Route::post('user/update/{id}', [UserController::class, 'update'])->name('updateUser');
 
-Route::get('freelancers', function(){
-    return view('backend.user.freelancer');
-})->name('freelancer');
+            // Settings (Only Admin)
+            Route::view('settings', 'backend.admin.settings')->name('settings');
+        });
 
-Route::get('project', function(){
-    return view('frontend.JobProMan.project');
-})->name('project');
+        // Projects (Accessible to All Authenticated Users)
+        Route::view('projects', 'backend.admin.project.projects')->name('projects');
+        Route::view('project/edit', 'backend.admin.project.edit')->name('projectedit');
+    });
 
-Route::get('about', function(){
-    return view('frontend.home.about');
-})->name('about');
-
-
-
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('backend.admin.users', function(){return view('backend.admin.user.users');})->name('users');
-    Route::get('backend.admin.projects', function(){return view('backend.admin.project.projects');})->name('projects');
-    Route::get('backend.admin.settings', function(){return view('backend.admin.settings');})->name('settings');
-    Route::get('backend.admin.user.edit', function(){return view('backend.admin.user.edit');})->name('useredit');
-    Route::get('backend.admin.project.edit', function(){return view('backend.admin.project.edit');})->name('projectedit');
+    // Profile Routes
+    Route::controller(ProfileController::class)->group(function () {
+        Route::get('/profile', 'edit')->name('profile.edit');
+        Route::patch('/profile', 'update')->name('profile.update');
+        Route::delete('/profile', 'destroy')->name('profile.destroy');
+    });
 });
+
 
 require __DIR__.'/auth.php';

@@ -1,0 +1,74 @@
+
+/* Hero Section */
+.hero-section {
+    padding: 50px 20px;
+    text-align: center;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #055052;
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    color: #055052;
+}
+
+/* Features Section */
+.features-section {
+    padding: 30px 20px;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.feature-card {
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    color: #055052;
+    animation: bounce 2s infinite;
+}
+
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}

@@ -23,7 +23,7 @@
                 <td>01-06-2024</td>
                 <td><span class="badge bg-info text-dark">Ongoing</span></td>
                 <td>
-                    <a class="btn btn-sm btn-outline-primary me-2" href="{{route('projectedit')}}">
+                    <a class="btn btn-sm btn-outline-primary me-2" href="{{route('admin.projectedit')}}">
                         <i class="fas fa-edit"></i> Edit
                     </a>
                     <button class="btn btn-sm btn-outline-danger">
@@ -38,7 +38,7 @@
                 <td>15-09-2023</td>
                 <td><span class="badge bg-success">Done</span></td>
                 <td>
-                    <a class="btn btn-sm btn-outline-primary me-2" href="{{route('projectedit')}}">
+                    <a class="btn btn-sm btn-outline-primary me-2" href="{{route('admin.projectedit')}}">
                         <i class="fas fa-edit"></i> Edit
                     </a>
                     <button class="btn btn-sm btn-outline-danger">
@@ -53,7 +53,7 @@
                 <td>01-12-2023</td>
                 <td><span class="badge bg-warning text-dark">Not Started</span></td>
                 <td>
-                    <a class="btn btn-sm btn-outline-primary me-2" href="{{route('projectedit')}}">
+                    <a class="btn btn-sm btn-outline-primary me-2" href="{{route('admin.projectedit')}}">
                         <i class="fas fa-edit"></i> Edit
                     </a>
                     <button class="btn btn-sm btn-outline-danger">

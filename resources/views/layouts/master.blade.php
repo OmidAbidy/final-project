@@ -13,11 +13,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
     
     <!-- Custom stylesheets -->
-    <link rel="stylesheet" href="{{asset('style/nav.css')}}">
-    <link rel="stylesheet" href="{{asset('style/main.css')}}">
+    <link rel="stylesheet" href="{{asset('style/frontend/nav.css')}}">
+    <link rel="stylesheet" href="{{asset('style/frontend/main.css')}}">
     @yield('links')
     <link rel="stylesheet"  href="style/frontent/about.css">
-    <link rel="stylesheet" href="/style/footer.css">
+    <link rel="stylesheet" href="/style/frontend/footer.css">
     
     <title>@yield('title') | {{config('app.name')}}</title>
 </head>
@@ -54,6 +54,12 @@
     <!-- Bootstrap JS (only include Bootstrap 5 bundle) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('javascript/frontend/index.js') }}"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
 
 </body>
 
