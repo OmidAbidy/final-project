@@ -23,7 +23,7 @@
                         <input type="radio" name="role" value="freelancer" class="form-check-input me-2">
                         Freelancer
                     </label>
-                    <p>I'm a Freelancer <br>I want to earn money</p>
+                    <p class="text-white">I'm a Freelancer <br>I want to earn money</p>
                 </div>
             </div>
             <div class="col-md-4 mb-3">
@@ -32,7 +32,7 @@
                         <input type="radio" name="role" value="client" class="form-check-input me-2">
                         Client
                     </label>
-                    <p>I'm a Client <br>I want to hire freelancers</p>
+                    <p class="text-white">I'm a Client <br>I want to hire freelancers</p>
                 </div>
             </div>
         </div>
@@ -40,12 +40,12 @@
         <!-- Buttons for Navigation -->
         <div class="row justify-content-center">
             <div class="col-6 col-md-3 text-center">
-                <a href="{{ url()->previous() }}" class="btn btn-lg animate-btn btn-warning">
+                <a href="{{ url()->previous() }}" class="btn btn-lg animate-btn">
                     <i class="fas fa-arrow-left"></i> Back
                 </a>
             </div>
             <div class="col-6 col-md-3 text-center">
-                <button type="submit" class="btn btn-lg animate-btn btn-success">
+                <button type="submit" class="btn btn-lg animate-btn">
                     Next <i class="fas fa-arrow-right"></i>
                 </button>
             </div>

@@ -27,15 +27,21 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     @can('isadmin')
-                    <li class="nav-item"><a class="nav-link" href="{{ route('admin.users') }}">Users</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.users') }}">Users</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.projects') }}">Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.settings') }}">Settings</a></li>
                     @endcan
-                    <li class="nav-item"><a class="nav-link" href="{{ route('myprofile') }}"> My Profile</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('admin.projects') }}"> Projects</a></li>
-                    @can('isadmin')
-                    <li class="nav-item"><a class="nav-link" href="{{ route('admin.settings') }}"> Settings</a></li>
                     
+                    @can('isfreelancer')
+                        <li class="nav-item"><a class="nav-link" href="{{ route('freelancer.profile') }}">My Profile</a></li>
                     @endcan
+                
+                    @can('isclient')
+                        <li class="nav-item"><a class="nav-link" href="{{ route('client.profile') }}">My Profile</a></li>
+                    @endcan
+                
                 </ul>
+                
                 
                 <!-- User Dropdown -->
                 <div class="dropdown">
@@ -58,7 +64,7 @@
 
     <!-- Content -->
     <div class="container content">
-        <p>Hi you are logged in as {{auth()->user()->role}}</p>
+        
         @yield('content')
     </div>
 

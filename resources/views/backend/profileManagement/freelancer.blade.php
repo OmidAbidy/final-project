@@ -8,7 +8,7 @@
     <div class="profile-container">
         <!-- Right Container -->
         <div class="right-container">
-            <img src="{{ auth()->user()->profile_picture ?? '/images/1.jpg' }}" alt="Profile" class="profile-img">
+            <img src="{{ auth()->user()->profile_picture ?? '/images/2.jpeg' }}" alt="Profile" class="profile-img">
             <h4 class="mt-3">{{ auth()->user()->name }}</h4>
             <p class="text-muted">{{ ucfirst(auth()->user()->role) }}</p>
             <div class="rating mb-2">
@@ -25,7 +25,7 @@
         <div class="left-container">
             <!-- Description Section -->
             <div class="info-box">
-                <h5>About Me</h5>
+                <h5>description</h5>
                 <p>{{ auth()->user()->description ?? 'No description available.' }}</p>
                 <i class="fas fa-edit edit-icon"></i>
             </div>
