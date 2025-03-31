@@ -59,6 +59,11 @@ class User extends Authenticatable
     }
 
 
+        public function clientJobs() // If clients post jobs
+    {
+        return $this->hasMany(ClientJob::class);
+    }
+
     // link with the freelancer table
     public function freelancerProfile()
     {
@@ -69,5 +74,25 @@ class User extends Authenticatable
         return $this->hasOne(ClientProfile::class, 'user_id');
     }
 
+    public function proposals()
+    {
+        return $this->hasMany(Proposal::class, 'freelancer_id');
+    }
+
+    // Role checkers
+    public function isFreelancer()
+    {
+        return $this->role === 'freelancer';
+    }
+
+    public function isClient()
+    {
+        return $this->role === 'client';
+    }
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
     
 }

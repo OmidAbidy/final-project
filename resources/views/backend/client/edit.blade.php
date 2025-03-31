@@ -3,12 +3,12 @@
 @section('content')
 <div class="container">
     <h2>Edit Client Profile</h2>
-    <form action="{{ route('client.update') }}" method="POST">
+    <form action="{{ route('client.update', ['id'=> $clientProfile->id]) }}" method="POST">
         @csrf
-
+        @method('PUT')
         <div class="form-group">
             <label>Company Name</label>
-            <input type="text" name="company_name" class="form-control" required value="{{ $clienProfile->company_name }}">
+            <input type="text" name="company_name" class="form-control" required value="{{ $clientProfile->company_name }}">
         </div>
 
         <div class="form-group">
@@ -30,3 +30,4 @@
     </form>
 </div>
 @endsection
+

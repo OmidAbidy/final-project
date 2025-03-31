@@ -81,6 +81,7 @@
             </div>
         </a>
         </div>
+        
         <!-- Sixth Card -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
         <a href="{{route('project')}}" class="text-decoration:none; text-reset">

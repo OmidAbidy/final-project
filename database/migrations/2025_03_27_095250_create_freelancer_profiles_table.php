@@ -12,15 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('freelancer_profiles', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->text('bio')->nullable(); // Bio
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id')->index('freelancer_profiles_user_id_foreign');
+            $table->text('bio')->nullable();
             $table->string('skills')->nullable();
-            $table->string('experience')->nullable(); // Experience
-            $table->string('portfolio_link')->nullable(); // Portfolio link
-            $table->decimal('hourly_rate', 8, 2)->nullable();
+            $table->string('experience')->nullable();
+            $table->string('portfolio_link')->nullable();
+            $table->decimal('hourly_rate')->nullable();
             $table->enum('availability', ['available', 'busy', 'offline'])->default('available');
-            $table->decimal('rating', 3, 2)->nullable(); // Rating (out of 5)
+            $table->decimal('rating', 3)->nullable();
             $table->timestamps();
         });
     }

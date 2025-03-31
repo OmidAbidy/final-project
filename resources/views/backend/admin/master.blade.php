@@ -28,15 +28,17 @@
                 <ul class="navbar-nav me-auto">
                     @can('isadmin')
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.users') }}">Users</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.projects') }}">Projects</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.settings') }}">Settings</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.jobs.index') }}">Jobs</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.settings') }}">Settings</a></li>  
                     @endcan
+                    
                     
                     @can('isfreelancer')
                         <li class="nav-item"><a class="nav-link" href="{{ route('freelancer.profile') }}">My Profile</a></li>
                     @endcan
                 
                     @can('isclient')
+                        <li class="nav-item"><a class="nav-link" href="{{ route('jobs.index') }}">jobs</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('client.profile') }}">My Profile</a></li>
                     @endcan
                 

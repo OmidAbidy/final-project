@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\ClientJob;
+use App\Policies\ClientJobPolicy;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
@@ -33,4 +35,8 @@ class AppServiceProvider extends ServiceProvider
             return Auth::user()->role == 'client'; 
         });
     }
+    protected $policies = [
+        ClientJob::class => ClientJobPolicy::class,
+    ];
+    
 }
