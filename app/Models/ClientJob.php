@@ -39,8 +39,7 @@ class ClientJob extends Model
         'experience_level',
         'payment_method',
         'hires_needed',
-        'terms',
-        'attachments'
+        'terms'
     ];
 
     /**
@@ -52,8 +51,7 @@ class ClientJob extends Model
         'posted_date' => 'datetime',
         'application_deadline' => 'datetime',
         'project_deadline' => 'datetime',
-        'is_negotiable' => 'boolean',
-        'attachments' => 'array',
+        'is_negotiable' => 'boolean'
     ];
 
     /**
@@ -83,12 +81,6 @@ class ClientJob extends Model
     public function proposals()
     {
         return $this->hasMany(Proposal::class, 'clientjob_id');
-        return collect();
-    }
-
-    public function skills()
-    {
-        // return $this->belongsToMany(Skill::class, 'job_skills');
     }
 
     /**

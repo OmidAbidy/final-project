@@ -14,7 +14,7 @@
     <div class="row">
         <!-- First Card -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-        <a href="{{route('freelancer')}}" class="text-decoration:none; text-reset">
+        <a href="" class="text-decoration:none; text-reset">
             <div class="card">
 
                 <div class="card-body">
@@ -27,7 +27,7 @@
         </div>
         <!-- Second Card -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-        <a href="{{route('freelancer')}}" class="text-decoration:none; text-reset">
+        <a href="" class="text-decoration:none; text-reset">
             <div class="card">
 
                 <div class="card-body">
@@ -40,7 +40,7 @@
         </div>
         <!-- Third Card -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-        <a href="{{route('freelancer')}}" class="text-decoration:none; text-reset">
+        <a href="" class="text-decoration:none; text-reset">
             <div class="card">
 
                 <div class="card-body">
@@ -53,7 +53,7 @@
         </div>
         <!-- Fourth Card -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-        <a href="{{route('freelancer')}}" class="text-decoration:none; text-reset">
+        <a href="" class="text-decoration:none; text-reset">
             <div class="card">
 
                 <div class="card-body">
@@ -66,7 +66,7 @@
         </div>
         <!-- Fifth Card -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-        <a href="{{route('freelancer')}}" class="text-decoration:none; text-reset">
+        <a href="" class="text-decoration:none; text-reset">
             <div class="card">
 
                 <div class="card-body">
@@ -79,7 +79,7 @@
         </div>
         <!-- Sixth Card -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-        <a href="{{route('freelancer')}}" class="text-decoration:none; text-reset">
+        <a href="" class="text-decoration:none; text-reset">
             <div class="card">
 
                 <div class="card-body">
@@ -92,7 +92,7 @@
         </div>
         <!-- Seventh Card -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-        <a href="{{route('freelancer')}}" class="text-decoration:none; text-reset">
+        <a href="" class="text-decoration:none; text-reset">
             <div class="card">
 
                 <div class="card-body">
@@ -105,7 +105,7 @@
         </div>
         <!-- Eighth Card -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-        <a href="{{route('freelancer')}}" class="text-decoration:none; text-reset">
+        <a href="" class="text-decoration:none; text-reset">
             <div class="card">
 
                 <div class="card-body">

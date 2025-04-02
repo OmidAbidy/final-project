@@ -51,7 +51,8 @@ class ClientJobPolicy
      */
     public function delete(User $user, ClientJob $job): bool
     {
-        return $user->role === 'admin';
+    return $user->role === 'admin' || $user->role === 'client';
+
     }
 
     /**
@@ -67,6 +68,6 @@ class ClientJobPolicy
      */
     public function forceDelete(User $user, ClientJob $job): bool
     {
-        return $user->role === 'admin';
+        return $user->role === 'client';
     }
 }

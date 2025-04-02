@@ -30,7 +30,6 @@ return new class extends Migration
             $table->enum('payment_method', ['escrow', 'milestone', 'on_completion']);
             $table->integer('hires_needed')->default(1);
             $table->text('terms')->nullable();
-            $table->json('attachments')->nullable();
             $table->timestamps();
         });
     }

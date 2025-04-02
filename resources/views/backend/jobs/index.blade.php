@@ -1,23 +1,26 @@
 @extends('backend.admin.master')
 
 @section('content')
-<h2>{{ auth()->user()->role === 'admin' ? 'Admin - All Jobs' : 'My Jobs' }}</h2>
 <div class="container py-4">
-    <div class="card shadow">
-        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-            <h3 class="mb-0">Posted Jobs</h3>
-            <a href="{{ route('jobs.create') }}" class="btn btn-light">
-                <i class="fas fa-plus"></i> Post New Job
-            </a>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-primary">{{ auth()->user()->role === 'admin' ? 'Admin - All Jobs' : 'My Jobs' }}</h2>
+        <a href="{{ route('jobs.create') }}" class="btn btn-primary shadow-sm">
+            <i class="fas fa-plus me-1"></i> Post New Job
+        </a>
+    </div>
+
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-gradient-primary text-black text-center py-3">
+            <h4 class="mb-0">Posted Jobs</h4>
         </div>
 
-        <div class="card-body">
+        <div class="card-body p-4">
             @if($jobs->isEmpty())
-                <div class="alert alert-info">No jobs posted yet.</div>
+                <div class="alert alert-info text-center">No jobs posted yet.</div>
             @else
                 <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead class="table-light">
+                    <table class="table table-hover align-middle text-center">
+                        <thead class="table-dark">
                             <tr>
                                 <th>ID</th>
                                 <th>Title</th>
@@ -31,30 +34,24 @@
                         <tbody>
                             @foreach ($jobs as $job)
                             <tr>
-                                <td><strong>{{ $job->id}}</strong></td>
-                                <td>
-                                    
-                                    <strong>{{ $job->title }}</strong>
-                                    <div class="text-muted small mt-1">
-                                        {{ Str::limit($job->description, 100) }}
-                                    </div>
+                                <td><strong>{{ $job->id }}</strong></td>
+                                <td class="text-start">
+                                    <strong class="text-primary">{{ $job->title }}</strong>
+                                    <p class="text-muted small mb-0">{{ Str::limit($job->description, 80) }}</p>
                                 </td>
                                 <td>{{ $job->category->name ?? 'N/A' }}</td>
                                 <td>
-                                    @if($job->budget_type === 'fixed')
-                                        ${{ number_format($job->budget_amount, 2) }}
-                                    @else
-                                        ${{ number_format($job->budget_amount, 2) }}/hr
+                                    <span class="fw-bold">${{ number_format($job->budget_amount, 2) }}</span>
+                                    @if($job->budget_type === 'hourly')
+                                        /hr
                                     @endif
                                     @if($job->is_negotiable)
                                         <span class="badge bg-warning text-dark">Negotiable</span>
                                     @endif
                                 </td>
                                 <td>
-                                    <div>Apply by: {{ $job->application_deadline->format('M d, Y') }}</div>
-                                    <div class="small text-muted">
-                                        {{ $job->application_deadline->diffForHumans() }}
-                                    </div>
+                                    <div class="fw-bold">{{ $job->application_deadline->format('M d, Y') }}</div>
+                                    <small class="text-muted">{{ $job->application_deadline->diffForHumans() }}</small>
                                 </td>
                                 <td>
                                     <span class="badge 
@@ -67,17 +64,17 @@
                                     </span>
                                 </td>
                                 <td>
-                                    <div class="d-flex gap-2">
-                                        <a href="{{ route('jobs.show', $job) }}" class="btn btn-sm btn-info" title="View">
+                                    <div class="btn-group" role="group">
+                                        <a href="{{ route('jobs.show', $job) }}" class="btn btn-outline-info btn-sm" title="View">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        <a href="{{ route('jobs.edit', $job) }}" class="btn btn-sm btn-warning" title="Edit">
+                                        <a href="{{ route('jobs.edit', $job) }}" class="btn btn-outline-warning btn-sm" title="Edit">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <form action="{{ route('jobs.destroy', $job) }}" method="POST">
+                                        <form action="{{ route('jobs.destroy', $job) }}" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger" title="Delete" onclick="return confirm('Are you sure?')">
+                                            <button type="submit" class="btn btn-outline-danger btn-sm" title="Delete">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </form>
@@ -102,8 +99,11 @@
         vertical-align: middle;
     }
     .badge {
-        font-size: 0.85em;
-        padding: 0.35em 0.65em;
+        font-size: 0.9em;
+        padding: 0.4em 0.8em;
+    }
+    .btn-group .btn {
+        border-radius: 5px;
     }
 </style>
 @endsection

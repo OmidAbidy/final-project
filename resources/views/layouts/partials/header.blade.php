@@ -10,7 +10,7 @@
                     <a class="nav-link" href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('jobs') }}">Find Job</a>
+                    <a class="nav-link" href="{{ route('jobs.publicIndex') }}">Find Job</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('freelancers') }}">Find Freelancer</a>

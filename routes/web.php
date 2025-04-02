@@ -10,14 +10,14 @@ use Illuminate\Support\Facades\Route;
 
 // Public Routes
 Route::view('/', 'frontend.home.index')->name('home');
-Route::get('job', [ClientJobController::class, 'publicIndex'])->name('jobs');
-Route::get('job/{job}', [ClientJobController::class, 'publicShow'])->name('jobs.show');
+Route::get('job', [ClientJobController::class, 'publicIndex'])->name('jobs.publicIndex');
+Route::get('job/{job}', [ClientJobController::class, 'publicShow'])->name('jobs.publicShow');
 Route::view('freelancers', 'frontend.JobProMan.freelancers')->name('freelancers');
 Route::view('contacts', 'frontend.home.contact')->name('contact');
 Route::view('help', 'frontend.helpAbout.help')->name('help');
 Route::view('about', 'frontend.helpAbout.about')->name('about');
 Route::view('BReg', 'auth.BeforeReg')->name('BReg');
-Route::view('project', 'frontend.JobProMan.project')->name('project');
+
 
 // Backend Freelancer Management (Changed route name)
 
@@ -98,10 +98,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::delete('/{job}', 'destroy')->name('destroy');
         Route::post('/{job}/complete', 'markAsCompleted')->name('complete');
         Route::get('/{job}/proposals', 'showProposals')->name('proposals');
-        
-        Route::post('/{job}/complete', 'markAsCompleted')->name('complete');
-        Route::get('/{job}/proposals', 'showProposals')->name('proposals');
-    });
+        });
 });
 
 require __DIR__ . '/auth.php';

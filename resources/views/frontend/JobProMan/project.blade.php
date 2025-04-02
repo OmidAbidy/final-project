@@ -32,9 +32,9 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="{{route('home')}}">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{route('jobs')}}">Find Job</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{route('freelancers')}}">Find Freelancer</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('jobs.publicIndex') }}">Find Job</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('freelancers') }}">Find Freelancer</a></li>
             </ul>
         </div>
     </nav>
@@ -44,39 +44,26 @@
         <div class="project-container row align-items-center">
             <!-- Text Content -->
             <div class="col-md-6">
-                <h3 class="text-primary mb-4">Project Information</h3>
+                <h3 class="text-primary mb-4">{{ $job->title }}</h3>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel orci ac mauris posuere faucibus.
-                    Nullam gravida, sapien vel gravida suscipit, orci urna interdum velit, non posuere leo risus vel libero.
-                    Curabitur fermentum sapien at dolor dignissim, eget fermentum neque aliquam. Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit. Integer vel orci ac mauris posuere faucibus.
+                    <strong>Description:</strong> {{ $job->description }}
                 </p>
+                <p><strong>Budget Type:</strong> {{ ucfirst($job->budget_type) }}</p>
+                <p><strong>Location:</strong> {{ $job->location }}</p>
+                <p><strong>Experience Level:</strong> {{ ucfirst($job->experience_level) }}</p>
+                <p><strong>Application Deadline:</strong> {{ \Carbon\Carbon::parse($job->application_deadline)->format('M d, Y') }}</p>
+                <p><strong>Project Deadline:</strong> {{ \Carbon\Carbon::parse($job->project_deadline)->format('M d, Y') }}</p>
+                <p><strong>Status:</strong> {{ ucfirst($job->status) }}</p>
+                <p><strong>Visibility:</strong> {{ ucfirst($job->visibility) }}</p>
+                <p><strong>Payment Method:</strong> {{ ucfirst($job->payment_method) }}</p>
+                <p><strong>Terms:</strong> {{ $job->terms ?? 'No additional terms' }}</p>
+                <p><strong>Status</strong> {{ $job->status }}</p>
             </div>
 
-            <!-- Image Content -->
-            <div class="col-md-6 text-center">
-                <img src="/images/a7.jpg" alt="Project Image" class="project-image img-fluid rounded-lg">
-            </div>
+            <!-- Removed Image Content as per request -->
+            <!-- Optional: Add a default placeholder image if needed -->
         </div>
 
-        <!-- Status Section with Animated Button -->
-        <div class="d-flex justify-content-center align-items-center mt-5">
-            <div class="status-label">Status</div>
-            <div class="btn-group ms-3">
-                <button type="button" class="btn btn-primary btn-status" id="statusButton">
-                    Active
-                </button>
-                <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    <span class="visually-hidden">Toggle dropdown</span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="statusButton">
-                    <li><a class="dropdown-item" href="#">Active</a></li>
-                    <li><a class="dropdown-item" href="#">Pending</a></li>
-                    <li><a class="dropdown-item" href="#">Completed</a></li>
-                </ul>
-            </div>
-        </div>
     </div>
 
     <!-- Bootstrap JS and dependencies -->
