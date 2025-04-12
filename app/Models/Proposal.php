@@ -17,15 +17,18 @@ class Proposal extends Model
         'bid_amount',
         'description',
         'status',
-        'delivery_time'
+        'delivery_time',
+        'shortlisted',
     ];
 
 
-  public function clientJob(){
-    $this->belongsTo(ClientJob::class);
-  }
+    public function clientJob()
+    {
+        return $this->belongsTo(ClientJob::class, 'clientjob_id');
+    }
 
-  public function freelancer(){
-    $this->belongsTo(User::class);
-  }
+    public function freelancer()
+    {
+        return $this->belongsTo(User::class, 'freelancer_id');
+    }
 }

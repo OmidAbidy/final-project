@@ -4,10 +4,12 @@
 <div class="container py-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="fw-bold text-primary">{{ auth()->user()->role === 'admin' ? 'Admin - All Jobs' : 'My Jobs' }}</h2>
+        @can('isclient')
         <a href="{{ route('jobs.create') }}" class="btn btn-primary shadow-sm">
             <i class="fas fa-plus me-1"></i> Post New Job
-        </a>
-    </div>
+        </a>    
+        @endcan
+        </div>
 
     <div class="card shadow-lg border-0">
         <div class="card-header bg-gradient-primary text-black text-center py-3">
@@ -65,9 +67,7 @@
                                 </td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <a href="{{ route('jobs.show', $job) }}" class="btn btn-outline-info btn-sm" title="View">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
+                                        @can('isadmin')
                                         <a href="{{ route('jobs.edit', $job) }}" class="btn btn-outline-warning btn-sm" title="Edit">
                                             <i class="fas fa-edit"></i>
                                         </a>
@@ -78,6 +78,27 @@
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </form>
+                                        @elseif((auth()->user()->can('isclient')))
+                                        <a href="{{ route('jobs.edit', $job) }}" class="btn btn-outline-warning btn-sm" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <form action="{{ route('jobs.destroy', $job) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-outline-danger btn-sm" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                        <a href="{{ route('jobs.show', $job) }}" class="btn btn-outline-info btn-sm" title="View">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        @elseif(auth()->user()->can('isfreelancer'))
+                                        <a href="{{ route('freelancer.jobs.show', $job) }}" class="btn btn-outline-info btn-sm" title="View">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        @endcan
+                                        
+                                        
                                     </div>
                                 </td>
                             </tr>
@@ -85,10 +106,10 @@
                         </tbody>
                     </table>
                 </div>
-
-                <div class="d-flex justify-content-center mt-4">
+                {{-- Pagination --}}
+                {{-- <div class="d-flex justify-content-center mt-4">
                     {{ $jobs->links() }}
-                </div>
+                </div> --}}
             @endif
         </div>
     </div>

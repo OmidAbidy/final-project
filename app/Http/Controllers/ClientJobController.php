@@ -119,9 +119,9 @@ class ClientJobController extends Controller
     {
         $jobs = ClientJob::with('client', 'category')
                         ->latest()
-                        ->paginate(15);
+                        ->get();
 
-        return view('backend.admin.jobs.index', compact('jobs'));
+        return view('backend.jobs.index', compact('jobs'));
     }
 
     public function adminDestroy(ClientJob $job)
@@ -129,19 +129,20 @@ class ClientJobController extends Controller
         $this->authorize('delete', $job);
         $job->delete();
 
-        return back()->with('success', 'Job deleted successfully!');
+        return redirect()->back()->with('success', 'Job deleted successfully!');
     }
 
     // Freelancer Methods
-    public function freelancerIndex()
+    public function freelancerIndex(ClientJob $job)
     {
+        
         $jobs = ClientJob::where('visibility', 'public')
                         ->where('status', 'open')
                         ->where('application_deadline', '>', now())
                         ->with('client', 'category')
                         ->latest()
                         ->paginate(10);
-
+                   
         return view('backend.jobs.index', compact('jobs'));
     }
 
@@ -150,7 +151,6 @@ class ClientJobController extends Controller
         if ($job->visibility !== 'public' || $job->status !== 'open') {
             abort(404);
         }
-
         return view('backend.jobs.show', [
             'job' => $job->load('client', 'category'),
             'hasApplied' => $job->proposals()->where('freelancer_id', auth()->id())->exists()

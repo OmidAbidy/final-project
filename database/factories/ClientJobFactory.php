@@ -18,10 +18,11 @@ class ClientJobFactory extends Factory
     public function definition(): array
     {
         return [
-             'client_id' => User::where('role', 'client')->inRandomOrder()->first()->id 
+            'client_id' => User::where('role', 'client')->inRandomOrder()->first()->id
                 ?? User::factory()->create(['role' => 'client'])->id,
-            'categorie_id' => Category::inRandomOrder()->first()->id 
-                ?? Category::factory()->create()->id, // Ensure category_id exists
+            'categorie_id' => optional(Category::inRandomOrder()->first())->id
+                ?? Category::create(['name' => 'Software Design', 'slug' => 'Software Development'])->id,
+            // Ensure category_id exists
             'title' => $this->faker->sentence(6),
             'description' => $this->faker->paragraph(),
             'budget_type' => $this->faker->randomElement(['fixed', 'hourly']),
@@ -29,14 +30,14 @@ class ClientJobFactory extends Factory
             'is_negotiable' => $this->faker->boolean(),
             'application_deadline' => now()->addDays(rand(5, 30)),
             'project_deadline' => now()->addMonths(rand(1, 6)),
-            'status' => $this->faker->randomElement(['open']), //'in_progress', 'completed', 'cancelled' later also add them
-            'visibility' => $this->faker->randomElement(['public']), //, 'invite_only' ,private later also add them
+            'status' => $this->faker->randomElement(['open', 'in_progress', 'completed', 'cancelled']), //'in_progress', 'completed', 'cancelled' later also add them
+            'visibility' => $this->faker->randomElement(['public', 'invite_only', 'private']), //, 'invite_only' ,private later also add them
             'location' => $this->faker->randomElement(['Remote', 'On-Site', 'Hybrid']),
             'experience_level' => $this->faker->randomElement(['entry', 'intermediate', 'expert']),
             'payment_method' => $this->faker->randomElement(['escrow', 'milestone', 'on_completion']),
             'hires_needed' => rand(1, 5),
             'terms' => $this->faker->sentence(),
-            
+
         ];
     }
 }

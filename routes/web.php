@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClientJobController;
 use App\Http\Controllers\ClientProfileController;
+use App\Http\Controllers\FreelancerController;
 use App\Http\Controllers\FreelancerProfileController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProposalController;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'frontend.home.index')->name('home');
 Route::get('job', [ClientJobController::class, 'publicIndex'])->name('jobs.publicIndex');
 Route::get('job/{job}', [ClientJobController::class, 'publicShow'])->name('jobs.publicShow');
-Route::view('freelancers', 'frontend.JobProMan.freelancers')->name('freelancers');
+Route::get('/freelancers', [FreelancerController::class, 'index'])->name('freelancers');
 Route::view('contacts', 'frontend.home.contact')->name('contact');
 Route::view('help', 'frontend.helpAbout.help')->name('help');
 Route::view('about', 'frontend.helpAbout.about')->name('about');
@@ -46,9 +47,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::view('projects', 'backend.admin.project.projects')->name('projects');
             Route::view('project/edit', 'backend.admin.project.edit')->name('projectedit');
 
-             // Admin job management
-             Route::get('jobs', [ClientJobController::class, 'adminIndex'])->name('jobs.index');
-             Route::delete('jobs/{job}', [ClientJobController::class, 'adminDestroy'])->name('jobs.destroy');
+            // Admin job management
+            Route::get('jobs', [ClientJobController::class, 'adminIndex'])->name('jobs.index');
+            Route::delete('jobs/{job}', [ClientJobController::class, 'adminDestroy'])->name('jobs.destroy');
         });
     });
 
@@ -61,30 +62,26 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Freelancer Profile Routes
     Route::middleware('can:isfreelancer')->prefix('backend/freelancer')->name('freelancer.')->group(function () {
-
-
         Route::get('/profile', [FreelancerProfileController::class, 'index'])->name('profile');
         Route::get('/create', [FreelancerProfileController::class, 'create'])->name('create');
         Route::post('/store', [FreelancerProfileController::class, 'store'])->name('store');
         Route::get('/edit', [FreelancerProfileController::class, 'edit'])->name('edit');
         Route::put('/update', [FreelancerProfileController::class, 'update'])->name('update');
-
-
-         // Freelancer job proposals
-         Route::get('jobs', [ClientJobController::class, 'freelancerIndex'])->name('jobs.index');
-         Route::get('jobs/{job}', [ClientJobController::class, 'freelancerShow'])->name('jobs.show');
     });
 
+    // Freelancer Profile Routes
+    Route::middleware('can:isfreelancer')->prefix('backend/freelancer/')->name('freelancer.jobs.')->group(function () {
+        // Freelancer job proposals
+        Route::get('jobs', [ClientJobController::class, 'freelancerIndex'])->name('index');
+        Route::get('jobs/{job}', [ClientJobController::class, 'freelancerShow'])->name('show');
+    });
 
     Route::middleware('can:isclient')->prefix('backend/client')->name('client.')->group(function () {
-
         Route::get('/profile', [ClientProfileController::class, 'index'])->name('profile');
         Route::get('/create', [ClientProfileController::class, 'create'])->name('create');
         Route::post('/store', [ClientProfileController::class, 'store'])->name('store');
         Route::get('/edit', [ClientProfileController::class, 'edit'])->name('edit');
         Route::put('/update', [ClientProfileController::class, 'update'])->name('update');
-
-        
     });
 
     // Client job management
@@ -98,23 +95,38 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::delete('/{job}', 'destroy')->name('destroy');
         Route::post('/{job}/complete', 'markAsCompleted')->name('complete');
         Route::get('/{job}/proposals', 'showProposals')->name('proposals');
-        });
+    });
 });
+
+//------------------------ Common ----------------------//
+Route::middleware('auth')->group(function(){
+        
+    Route::get('/proposals', [ProposalController::class, 'index'])->name('proposals.index');
+    Route::get('/proposals/{proposal}', [ProposalController::class, 'show'])->name('proposals.show');
+
+});
+// -------------------- Freelancer Routes -------------------- //
+Route::middleware(['auth', 'role:freelancer'])->group(function () {
+    Route::get('/proposals/create/{clientjob_id}', [ProposalController::class, 'create'])->name('proposals.create');
+    Route::post('/proposals', [ProposalController::class, 'store'])->name('proposals.store');
+    Route::get('/proposals/{proposal}/edit', [ProposalController::class, 'edit'])->name('proposals.edit');
+    Route::put('/proposals/{proposal}', [ProposalController::class, 'update'])->name('proposals.update');
+    Route::delete('/proposals/{proposal}', [ProposalController::class, 'destroy'])->name('proposals.destroy');
+});
+
+// -------------------- Client Routes -------------------- //
+Route::middleware(['auth', 'role:client'])->group(function () {
+    Route::put('/proposals/{proposal}/update-status', [ProposalController::class, 'updateStatus'])->name('proposals.updateStatus');
+    Route::post('/proposals/{proposal}/shortlist', [ProposalController::class, 'shortlist'])->name('proposals.shortlist');
+    // Route::get('/proposals', [ProposalController::class, 'shortlisted'])->name('proposals.shortlisted'); this route was making problems
+    Route::post('/proposals/{proposal}/message', [ProposalController::class, 'messageFreelancer'])->name('proposals.messageFreelancer');
+});
+
+// -------------------- Admin Routes -------------------- //
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin/proposals', [ProposalController::class, 'adminIndex'])->name('admin.proposals.index');
+    Route::post('/admin/proposals/{proposal}/admin-status', [ProposalController::class, 'adminUpdateStatus'])->name('admin.proposals.updateStatus');
+});
+
 
 require __DIR__ . '/auth.php';
-
-
-
-// Proposals routes with role-based access
-Route::controller(ProposalController::class)->group(function () {
-    // Freelancer-only routes
-    Route::middleware(['auth', 'role:freelancer'])->group(function () {
-        Route::get('/jobs/{clientJob}/proposals/create', 'create')->name('proposals.create');
-        Route::post('/proposals', 'store')->name('proposals.store');
-    });
-
-    // Client-only routes
-    Route::middleware(['auth', 'role:client'])->group(function () {
-        Route::patch('/proposals/{proposal}/status', 'updateStatus')->name('proposals.update.status');
-    });
-});

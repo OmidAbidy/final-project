@@ -20,14 +20,14 @@ class UserSeeder extends Seeder
             'email' => 'janesmith@example.com',
             'password' => Hash::make('password123'),
             'role' => 'client',
-            'profile_picture' => 'profile_pics/janesmith.jpg',
+            'profile_picture' => 'images/1.jpg',
         ]);
         User::create([
             'name' => 'John Doe',
             'email' => 'johndoe@example.com',
             'password' => Hash::make('password123'),
             'role' => 'freelancer', // Adjust based on your ENUM values
-            'profile_picture' => 'profile_pics/johndoe.jpg', // Adjust as needed
+            'profile_picture' => 'images/0.jpeg', // Adjust as needed
         ]);
 
     }

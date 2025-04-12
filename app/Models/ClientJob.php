@@ -65,6 +65,14 @@ class ClientJob extends Model
         'is_expired'
     ];
 
+
+    // ClientJob model
+public function user()
+{
+    return $this->belongsTo(User::class, 'user_id');
+}
+
+
     /**
      * Relationships
      */

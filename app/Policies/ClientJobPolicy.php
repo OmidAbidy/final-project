@@ -14,10 +14,8 @@ class ClientJobPolicy
      */
     public function viewAny(User $user): bool
     {
-            return $user->role === 'admin' || $user->role === 'client';
-       
-
-    }
+            return in_array($user->role, ['freelancer', 'client', 'admin']);
+           }
 
     /**
      * Determine whether the user can view the model.
@@ -25,11 +23,9 @@ class ClientJobPolicy
     public function view(User $user, ClientJob $job)
     {
         // Allow clients to view their own jobs
-        return $user->role === 'admin' || $user->role === 'client';
-
+    return $user->role === 'admin' ||
+           ($user->role === 'client' && $job->client_id === $user->id);
     }
-    
-
     /**
      * Determine whether the user can create models.
      */
@@ -37,7 +33,6 @@ class ClientJobPolicy
     {
         return false;
     }
-
     /**
      * Determine whether the user can update the model.
      */
@@ -45,7 +40,6 @@ class ClientJobPolicy
     {
         return $user->role === 'admin' || $user->role === 'client';
     }
-
     /**
      * Determine whether the user can delete the model.
      */
@@ -68,6 +62,6 @@ class ClientJobPolicy
      */
     public function forceDelete(User $user, ClientJob $job): bool
     {
-        return $user->role === 'client';
+        return $user->role === 'client' || $user->role === 'admin';
     }
 }

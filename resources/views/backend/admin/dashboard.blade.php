@@ -1,73 +1,90 @@
 @extends('backend.admin.master')
 
 @section('content')
-<div class="container mt-4">
+<div class="container-fluid px-4">
 
-  <!-- Quick Stats Section -->
-  <div class="row mb-5">
-    <div class="col-md-3">
-      <div class="card stat-card shadow-sm">
-        <div class="card-body">
-          <i class="fas fa-users stat-icon"></i>
-          <h5>Total Users</h5>
-          <p class="display-6 fw-bold">{{ \App\Models\User::count() }}</p>
-        </div>
+  {{-- Header Stats Section --}}
+  <div class="row my-4">
+    <div class="col-lg-3 col-sm-6 mb-3">
+      <div class="card border-0 shadow-lg rounded-4 text-center py-4 stat-card glass">
+        <h6 class="text-muted">Users</h6>
+        <h2 class="fw-bold">{{ \App\Models\User::count() }}</h2>
+        <i class="fas fa-users fa-lg text-primary mt-2"></i>
       </div>
     </div>
-    <div class="col-md-3">
-      <div class="card stat-card bg-success text-white shadow-sm">
-        <div class="card-body">
-          <i class="fas fa-tasks stat-icon"></i>
-          <h5>Total Projects</h5>
-          <p class="display-6 fw-bold">65</p>
-        </div>
+    <div class="col-lg-3 col-sm-6 mb-3">
+      <div class="card border-0 shadow-lg rounded-4 text-center py-4 stat-card glass">
+        <h6 class="text-muted">Projects</h6>
+        <h2 class="fw-bold">{{ \App\Models\ClientJob::count() }}</h2>
+        <i class="fas fa-briefcase fa-lg text-success mt-2"></i>
       </div>
     </div>
-    <div class="col-md-3">
-      <div class="card stat-card bg-info text-white shadow-sm">
-        <div class="card-body">
-          <i class="fas fa-dollar-sign stat-icon"></i>
-          <h5>Revenue</h5>
-          <p class="display-6 fw-bold">$12,000</p>
-        </div>
+    <div class="col-lg-3 col-sm-6 mb-3">
+      <div class="card border-0 shadow-lg rounded-4 text-center py-4 stat-card glass">
+        <h6 class="text-muted">Revenue</h6>
+        <h2 class="fw-bold">$0</h2>
+        <i class="fas fa-dollar-sign fa-lg text-info mt-2"></i>
       </div>
     </div>
-    <div class="col-md-3">
-      <div class="card stat-card bg-warning text-dark shadow-sm">
-        <div class="card-body">
-          <i class="fas fa-tasks stat-icon"></i>
-          <h5>Pending Tasks</h5>
-          <p class="display-6 fw-bold">8</p>
-        </div>
+    <div class="col-lg-3 col-sm-6 mb-3">
+      <div class="card border-0 shadow-lg rounded-4 text-center py-4 stat-card glass">
+        <h6 class="text-muted">Pending Tasks</h6>
+        <h2 class="fw-bold">8</h2>
+        <i class="fas fa-tasks fa-lg text-warning mt-2"></i>
       </div>
     </div>
   </div>
 
-  <!-- Graphs Section -->
-  <div class="row">
-    <div class="col-md-6">
-      <div class="card p-3 shadow-sm">
-        <h5 class="text-secondary">User Growth</h5>
-        <canvas id="userGrowthChart"></canvas> <!-- Placeholder for Chart.js -->
+  {{-- Graphs --}}
+  <div class="row g-4">
+    <div class="col-lg-6">
+      <div class="card border-0 rounded-4 p-4 shadow glass">
+        <h6 class="text-muted">User Growth</h6>
+        <canvas id="userGrowthChart" height="200"></canvas>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="card p-3 shadow-sm">
-        <h5 class="text-secondary">Revenue Trends</h5>
-        <canvas id="revenueChart"></canvas> <!-- Placeholder for Chart.js -->
+    <div class="col-lg-6">
+      <div class="card border-0 rounded-4 p-4 shadow glass">
+        <h6 class="text-muted">Revenue Over Time</h6>
+        <canvas id="revenueChart" height="200"></canvas>
       </div>
     </div>
   </div>
 
-  <!-- Recent Activity Section -->
-  <div class="mt-5">
-    <h4 class="text-secondary">Recent Activity</h4>
-    <ul class="list-group list-group-flush shadow-sm rounded">
-      <li class="list-group-item">📧 New user registered: john.doe@example.com</li>
-      <li class="list-group-item">✅ Project "Alpha" marked as completed</li>
-      <li class="list-group-item">🚀 New project "Gamma" started</li>
-    </ul>
+  {{-- Leaderboard --}}
+  <div class="row mt-5">
+    <div class="col-lg-6">
+      <div class="card shadow border-0 rounded-4 p-4 glass">
+        <h6 class="mb-3">Top Freelancers</h6>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0">
+            <span>👨‍💻 Alex Johnson</span>
+            <span class="badge bg-primary">12 Projects</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0">
+            <span>👩‍💻 Sara L.</span>
+            <span class="badge bg-primary">9 Projects</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0">
+            <span>🧑‍💼 David K.</span>
+            <span class="badge bg-primary">7 Projects</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    {{-- Recent Activity --}}
+    <div class="col-lg-6">
+      <div class="card shadow border-0 rounded-4 p-4 glass">
+        <h6 class="mb-3">Recent Activity</h6>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item border-0">📧 <strong>emma.w@example.com</strong> registered</li>
+          <li class="list-group-item border-0">✅ Project <strong>“Beta App”</strong> completed</li>
+          <li class="list-group-item border-0">💬 New message from <strong>Client X</strong></li>
+        </ul>
+      </div>
+    </div>
   </div>
+
 </div>
-
 @endsection

@@ -1,41 +1,14 @@
-@auth
-@if(auth()->user()->isFreelancer())
-    <a href="{{ route('proposals.create', $job) }}" class="btn btn-success mb-4">
-        Submit Proposal
-    </a>
-@endif
+@extends('backend.admin.master')
 
-@if(auth()->user()->isClient() && auth()->user()->id === $job->user_id)
-    <h3>Received Proposals</h3>
-    @foreach($job->proposals as $proposal)
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5>
-                    {{ $proposal->freelancer->name }}
-                    @if($proposal->freelancer->freelancerProfile)
-                        <span class="badge bg-primary">
-                            {{ $proposal->freelancer->freelancerProfile->title }}
-                        </span>
-                    @endif
-                </h5>
-                <p>Bid: ${{ number_format($proposal->bid_amount, 2) }}</p>
-                <p>Delivery Time: {{ $proposal->delivery_time }}</p>
-                <p>Status: {{ ucfirst($proposal->status) }}</p>
-                
-                @if($proposal->status === 'pending')
-                    <form method="POST" action="{{ route('proposals.update.status', $proposal) }}">
-                        @csrf
-                        @method('PATCH')
-                        <button type="submit" name="status" value="accepted" class="btn btn-success btn-sm">
-                            Accept
-                        </button>
-                        <button type="submit" name="status" value="rejected" class="btn btn-danger btn-sm">
-                            Reject
-                        </button>
-                    </form>
-                @endif
-            </div>
-        </div>
-    @endforeach
+@section('content')
+<h2>Proposal Detail</h2>
+<p><strong>Job:</strong> {{ $job->title }}</p>
+<p><strong>Freelancer:</strong> {{ $proposal->freelancer->name }}</p>
+<p><strong>Bid:</strong> ${{ $proposal->bid_amount }}</p>
+<p><strong>Status:</strong> {{ ucfirst($proposal->status) }}</p>
+<p><strong>Description:</strong><br>{{ $proposal->description }}</p>
+<p><strong>Delivery Time:</strong> {{ $proposal->delivery_time }}</p>
+@if(auth()->user()->isClient())
+  @include('backend.proposals.components.status-form')
 @endif
-@endauth
+@endsection

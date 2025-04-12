@@ -30,7 +30,8 @@ class UserFactory extends Factory
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
             'role' => $this->faker->randomElement(['freelancer', 'client', 'admin']),
-            'profile_picture' => 'profile_pics/1.jpeg',
+            'profile_picture' => 'https://picsum.photos/200/300?random=' . $this->faker->unique()->numberBetween(1, 1000),
+
         ];
     }
 

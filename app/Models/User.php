@@ -59,7 +59,7 @@ class User extends Authenticatable
     }
 
 
-        public function clientJobs() // If clients post jobs
+     public function clientJobs() // If clients post jobs
     {
         return $this->hasMany(ClientJob::class);
     }

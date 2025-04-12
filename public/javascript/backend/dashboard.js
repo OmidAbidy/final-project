@@ -1,38 +1,27 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // User Growth Chart
-    const userGrowthCtx = document.getElementById('userGrowthChart').getContext('2d');
-    new Chart(userGrowthCtx, {
+    new Chart(document.getElementById('userGrowthChart'), {
       type: 'line',
       data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        labels: ['Jan', 'Feb', 'Mar', 'Apr'],
         datasets: [{
           label: 'Users',
-          data: [50, 70, 90, 120, 150, 200],
-          borderColor: '#007bff',
-          backgroundColor: 'rgba(0, 123, 255, 0.1)',
+          data: [15, 30, 45, 60],
+          borderColor: '#0d6efd',
+          backgroundColor: 'rgba(13, 110, 253, 0.1)',
           fill: true,
+          tension: 0.4
         }]
-      },
-      options: {
-        responsive: true,
       }
     });
   
-    // Revenue Chart
-    const revenueCtx = document.getElementById('revenueChart').getContext('2d');
-    new Chart(revenueCtx, {
+    new Chart(document.getElementById('revenueChart'), {
       type: 'bar',
       data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        labels: ['Jan', 'Feb', 'Mar', 'Apr'],
         datasets: [{
-          label: 'Revenue ($)',
-          data: [3000, 5000, 4000, 6000, 8000, 12000],
-          backgroundColor: '#28a745',
+          label: 'Revenue',
+          data: [200, 450, 300, 600],
+          backgroundColor: '#20c997'
         }]
-      },
-      options: {
-        responsive: true,
       }
     });
-  });
-  
+ 
