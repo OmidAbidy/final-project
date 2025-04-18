@@ -67,10 +67,10 @@ class ClientJob extends Model
 
 
     // ClientJob model
-public function user()
-{
-    return $this->belongsTo(User::class, 'user_id');
-}
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
 
     /**
@@ -97,7 +97,7 @@ public function user()
     protected function formattedPostedDate(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->posted_date->format('M d, Y'),
+            get: fn() => $this->posted_date->format('M d, Y'),
         );
     }
 
@@ -116,7 +116,7 @@ public function user()
     protected function isExpired(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->application_deadline->isPast(),
+            get: fn() => $this->application_deadline->isPast(),
         );
     }
 
@@ -159,5 +159,13 @@ public function user()
     public function hasAcceptedProposal()
     {
         return $this->proposals()->where('status', 'accepted')->exists();
+    }
+
+
+    //Relationships with messages
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class, 'clientjob_id');
     }
 }

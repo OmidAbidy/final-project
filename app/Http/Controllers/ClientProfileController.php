@@ -5,50 +5,41 @@ namespace App\Http\Controllers;
 use App\Models\ClientProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ClientProfileController extends Controller
 {
     public function __construct()
     {
-        // Only authenticated users with "client" role can access these methods
+        // Middleware or auth checks can go here if needed
     }
-    /**
-     * Display the client's profile.
-     */
+
     public function index()
     {
         $user = auth()->user();
 
-        // Ensure only clients can access this
         if (strtolower($user->role) !== 'client') {
-            return redirect()->route('dashboard')->with('error', 'You are not authorized to view this page.');
+            return redirect()->route('dashboard')->with('error', 'Unauthorized access.');
         }
 
-        $clientProfile = $user->clientProfile; // Assuming a relationship exists
+        $clientProfile = $user->clientProfile;
 
         if (!$clientProfile) {
-            return redirect()->route('client.create')->with('error', 'Client profile not found. Please create one.');
+            return redirect()->route('client.create')->with('error', 'Please create a client profile.');
         }
+
         return view('backend.client.profile', compact('clientProfile'));
     }
 
-    /**
-     * Show the form for creating a new client profile.
-     */
     public function create()
     {
-        $user = auth()->user();
-
-        if ($user->role !== 'client') {
+        if (auth()->user()->role !== 'client') {
             return redirect()->route('dashboard')->with('error', 'Only clients can create a profile.');
         }
 
         return view('backend.client.create');
     }
 
-    /**
-     * Store a newly created client profile.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -56,10 +47,23 @@ class ClientProfileController extends Controller
             'company_description' => 'nullable|string',
             'website_name' => 'nullable|url',
             'industry' => 'required|string|max:255',
+            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
+        // Handle profile picture upload (stored in users table)
+        $user = auth()->user();
+        if ($request->hasFile('profile_picture')) {
+            if ($user->profile_picture) {
+                Storage::disk('public')->delete($user->profile_picture);
+            }
+
+            $path = $request->file('profile_picture')->store('profile_pictures', 'public');
+            $user->profile_picture = $path;
+            $user->save();
+        }
+
         ClientProfile::create([
-            'user_id' => Auth::id(),
+            'user_id' => $user->id,
             'company_name' => $request->company_name,
             'company_description' => $request->company_description,
             'website_name' => $request->website_name,
@@ -69,23 +73,13 @@ class ClientProfileController extends Controller
         return redirect()->route('client.profile')->with('success', 'Profile created successfully.');
     }
 
-    /**
-     * Show the form for editing the client profile.
-     */
     public function edit()
     {
-        $clientProfile = ClientProfile::where('user_id', Auth::id())->first();
-
-        if (!$clientProfile) {
-            return redirect()->route('client.create')->with('error', 'Client profile not found.');
-        }
+        $clientProfile = ClientProfile::where('user_id', Auth::id())->firstOrFail();
 
         return view('backend.client.edit', compact('clientProfile'));
     }
 
-    /**
-     * Update the client's profile.
-     */
     public function update(Request $request)
     {
         $request->validate([
@@ -93,15 +87,29 @@ class ClientProfileController extends Controller
             'company_description' => 'nullable|string',
             'website_name' => 'nullable|url',
             'industry' => 'required|string|max:255',
+            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        $clientProfile = ClientProfile::where('user_id', Auth::id())->first();
+        $clientProfile = ClientProfile::where('user_id', Auth::id())->firstOrFail();
 
-        if (!$clientProfile) {
-            return redirect()->route('client.create')->with('error', 'Client profile not found.');
+        $clientProfile->update($request->only([
+            'company_name',
+            'company_description',
+            'website_name',
+            'industry',
+        ]));
+
+        // Update user profile picture if present
+        $user = auth()->user();
+        if ($request->hasFile('profile_picture')) {
+            if ($user->profile_picture) {
+                Storage::disk('public')->delete($user->profile_picture);
+            }
+
+            $path = $request->file('profile_picture')->store('profile_pictures', 'public');
+            $user->profile_picture = $path;
+            $user->save();
         }
-
-        $clientProfile->update($request->all());
 
         return redirect()->route('client.profile')->with('success', 'Profile updated successfully.');
     }

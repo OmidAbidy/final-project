@@ -40,7 +40,7 @@
         <!-- Buttons for Navigation -->
         <div class="row justify-content-center">
             <div class="col-6 col-md-3 text-center">
-                <a href="{{ url()->previous() }}" class="btn btn-lg animate-btn">
+                <a href="{{ url()->previous() }}" class="btn btn-lg animate-btn ">
                     <i class="fas fa-arrow-left"></i> Back
                 </a>
             </div>

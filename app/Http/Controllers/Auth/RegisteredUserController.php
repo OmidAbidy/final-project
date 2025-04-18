@@ -50,29 +50,19 @@ class RegisteredUserController extends Controller
 
         // If user is a freelancer, create the freelancer profile
         if ($user->role === 'freelancer') {
-            FreelancerProfile::create([
-                'user_id' => $user->id,
-                'skills' => null,  // You can default these to null
-                'hourly_rate' => null,
-                'availability' => 'offline',  // Default availability
-                'bio' => null,
-                'experience' => null,
-                'portfolio_link' => null,
-                'rating' => null,
-            ]);
+            return redirect()->route('freelancer.create');
         }
+        
 
-         // If the user is a client, create the client profile
-         if ($user->role === 'client') {
-            ClientProfile::create([
-                'user_id' => $user->id,
-                'company_name' => null,
-                'company_description' => null,
-                'website_name' => null,
-                'industry' => null,
-            ]);
+        // If the user is a client, create the client profile
+        // NEW:
+        if ($user->role === 'client') {
+            return redirect()->route('client.create');
         }
-
+        // If the user is an admin, redirect to the dashboard
+        if ($user->role === 'admin') {
+            return redirect()->route('dashboard');
+        }
         return redirect()->route('dashboard');
     }
 }

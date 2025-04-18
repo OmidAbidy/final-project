@@ -1,13 +1,16 @@
 @extends('backend.admin.master')
 
 @section('content')
-    <div class="container py-4">
-        <h2 class="mb-4 text-primary">Edit Job: {{ $job->title }}</h2>
+    <div class="container mx-auto px-6 py-10 max-w-7xl">
 
-        {{-- Display Validation Errors --}}
+        <!-- Page Title -->
+        <h2 class="text-3xl font-extrabold text-teal-600 mb-8">Edit Job: {{ $job->title }}</h2>
+
+        <!-- Validation Errors -->
         @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
+            <div class="bg-red-100 border-l-4 border-red-500 text-red-700 px-6 py-4 mb-8 rounded-lg shadow-md">
+                <strong class="block mb-2 text-lg font-semibold">There were some problems with your input:</strong>
+                <ul class="list-disc pl-5 space-y-1">
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
@@ -19,35 +22,60 @@
             @csrf
             @method('PUT')
 
-            <div class="row">
+            <!-- Main Content -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <!-- Left Column -->
-                <div class="col-md-8">
-                    {{-- Job Title --}}
-                    <div class="mb-3">
-                        <label for="title" class="form-label">Job Title</label>
-                        <input type="text" name="title" id="title" class="form-control"
-                            value="{{ old('title', $job->title) }}" required>
+                <div class="lg:col-span-2 space-y-8 bg-[rgba(165,210,214,0.7)] p-8 rounded-lg shadow-lg">
+                    <!-- Job Title -->
+                    <div class="space-y-2">
+                        <label for="title" class="text-lg font-medium text-gray-700">Job Title</label>
+                        <input type="text" name="title" id="title" value="{{ old('title', $job->title) }}"
+                            class="w-full border-2 border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-teal-600 focus:border-teal-600 text-lg"
+                            required>
                     </div>
 
-                    {{-- Description --}}
-                    <div class="mb-3">
-                        <label for="description" class="form-label">Job Description</label>
-                        <textarea name="description" id="description" class="form-control" rows="4" required>{{ old('description', $job->description) }}</textarea>
+                    <!-- Job Description -->
+                    <div class="space-y-2">
+                        <label for="description" class="text-lg font-medium text-gray-700">Job Description</label>
+                        <textarea name="description" id="description" rows="6"
+                            class="w-full border-2 border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-teal-600 focus:border-teal-600 text-lg"
+                            required>{{ old('description', $job->description) }}</textarea>
                     </div>
 
-                    {{-- Additional Terms --}}
-                    <div class="mb-3">
-                        <label for="terms" class="form-label">Additional Terms</label>
-                        <textarea name="terms" id="terms" class="form-control">{{ old('terms', $job->terms) }}</textarea>
+                    <!-- Additional Terms -->
+                    <div class="space-y-2">
+                        <label for="terms" class="text-lg font-medium text-gray-700">Additional Terms</label>
+                        <textarea name="terms" id="terms" rows="4"
+                            class="w-full border-2 border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-teal-600 focus:border-teal-600 text-lg">{{ old('terms', $job->terms) }}</textarea>
                     </div>
+
+
+
+                    <!-- Submit Button -->
+                    <div class="flex justify-center align-items-center gap-4 mt-6">
+                        <!-- Back Button -->
+                        <a href="{{ url()->previous() }}"
+                            class="inline-flex items-center gap-3 text-white bg-teal-600 hover:bg-teal-700 px-6 py-3 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105">
+                            <i class="fas fa-arrow-left"></i> Back
+                        </a>
+
+                        <!-- Submit Button -->
+                        <button type="submit"
+                            class="bg-teal-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-teal-700 transition-all duration-300 transform hover:scale-105">
+                            Update Job
+                        </button>
+                    </div>
+
                 </div>
 
                 <!-- Right Column -->
-                <div class="col-md-4">
-                    {{-- Category --}}
-                    <div class="mb-3">
-                        <label for="categorie_id" class="form-label">Category</label>
-                        <select name="categorie_id" id="categorie_id" class="form-control" required>
+                <div class="space-y-8 bg-[rgba(167,207,210,0.7)] p-8 rounded-lg shadow-lg">
+                    <!-- Category -->
+                    <div class="space-y-2">
+                        <label for="categorie_id" class="text-lg font-medium text-gray-700">Category</label>
+                        <select name="categorie_id" id="categorie_id"
+                            class="w-full border-2 border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-teal-600 focus:border-teal-600 text-lg"
+                            required>
                             <option value="">Select a Category</option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}"
@@ -58,65 +86,59 @@
                         </select>
                     </div>
 
-                    {{-- Budget Type --}}
-                    <div class="mb-3">
-                        <label class="form-label">Budget Type</label>
-                        <select name="budget_type" id="budget_type" class="form-control" required>
-                            <option value="fixed" {{ old('budget_type', $job->budget_type) == 'fixed' ? 'selected' : '' }}>
-                                Fixed</option>
+                    <!-- Budget Type -->
+                    <div class="space-y-2">
+                        <label for="budget_type" class="text-lg font-medium text-gray-700">Budget Type</label>
+                        <select name="budget_type" id="budget_type"
+                            class="w-full border-2 border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-teal-600 focus:border-teal-600 text-lg"
+                            required>
+                            <option value="fixed"
+                                {{ old('budget_type', $job->budget_type) == 'fixed' ? 'selected' : '' }}>Fixed</option>
                             <option value="hourly"
                                 {{ old('budget_type', $job->budget_type) == 'hourly' ? 'selected' : '' }}>Hourly</option>
                         </select>
                     </div>
 
-                    {{-- Budget Amount --}}
-                    <div class="mb-3">
-                        <label for="budget_amount" class="form-label">Budget Amount</label>
-                        <input type="number" name="budget_amount" id="budget_amount" class="form-control"
-                            value="{{ old('budget_amount', $job->budget_amount) }}">
+                    <!-- Budget Amount -->
+                    <div class="space-y-2">
+                        <label for="budget_amount" class="text-lg font-medium text-gray-700">Budget Amount</label>
+                        <input type="number" name="budget_amount" id="budget_amount"
+                            value="{{ old('budget_amount', $job->budget_amount) }}"
+                            class="w-full border-2 border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-teal-600 focus:border-teal-600 text-lg">
                     </div>
 
-                    {{-- Negotiable Checkbox --}}
-                    <div class="mb-3">
+                    <!-- Negotiable Checkbox -->
+                    <div class="flex items-center gap-2">
                         <input type="hidden" name="is_negotiable" value="0">
                         <input type="checkbox" name="is_negotiable" id="is_negotiable" value="1"
-                            {{ old('is_negotiable', $job->is_negotiable) ? 'checked' : '' }}>
-                        <label for="is_negotiable">Negotiable</label>
+                            class="accent-teal-600" {{ old('is_negotiable', $job->is_negotiable) ? 'checked' : '' }}>
+                        <label for="is_negotiable" class="text-gray-700 text-lg">Negotiable</label>
                     </div>
 
-                    {{-- Application Deadline --}}
-                    <div class="mb-3">
-                        <label for="application_deadline" class="form-label">Application Deadline</label>
-                        <input type="date" name="application_deadline" id="application_deadline" class="form-control"
+                    <!-- Application Deadline -->
+                    <div class="space-y-2">
+                        <label for="application_deadline" class="text-lg font-medium text-gray-700">Application
+                            Deadline</label>
+                        <input type="date" name="application_deadline" id="application_deadline"
                             value="{{ old('application_deadline', $job->application_deadline->format('Y-m-d')) }}"
+                            class="w-full border-2 border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-teal-600 focus:border-teal-600 text-lg"
                             required>
                     </div>
 
-                    {{-- Project Deadline --}}
-                    <div class="mb-3">
-                        <label for="project_deadline" class="form-label">Project Deadline</label>
-                        <input type="date" name="project_deadline" id="project_deadline" class="form-control"
-                            value="{{ old('project_deadline', $job->project_deadline ? $job->project_deadline->format('Y-m-d') : '') }}">
+                    <!-- Project Deadline -->
+                    <div class="space-y-2">
+                        <label for="project_deadline" class="text-lg font-medium text-gray-700">Project Deadline</label>
+                        <input type="date" name="project_deadline" id="project_deadline"
+                            value="{{ old('project_deadline', $job->project_deadline ? $job->project_deadline->format('Y-m-d') : '') }}"
+                            class="w-full border-2 border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-teal-600 focus:border-teal-600 text-lg">
                     </div>
 
-                    {{-- Visibility --}}
-                    <div class="mb-3">
-                        <label class="form-label">Visibility</label>
-                        <select name="visibility" id="visibility" class="form-control" required>
-                            <option value="public" {{ old('visibility', $job->visibility) == 'public' ? 'selected' : '' }}>
-                                Public</option>
-                            <option value="private"
-                                {{ old('visibility', $job->visibility) == 'private' ? 'selected' : '' }}>Private</option>
-                            <option value="invite_only"
-                                {{ old('visibility', $job->visibility) == 'invite_only' ? 'selected' : '' }}>Invite Only
-                            </option>
-                        </select>
-                    </div>
-
-                    {{-- Status --}}
-                    <div class="mb-3">
-                        <label for="status" class="form-label">Status</label>
-                        <select name="status" id="status" class="form-control" required>
+                    <!-- Status -->
+                    <div class="space-y-2">
+                        <label for="status" class="text-lg font-medium text-gray-700">Status</label>
+                        <select name="status" id="status"
+                            class="w-full border-2 border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-teal-600 focus:border-teal-600 text-lg"
+                            required>
                             <option value="open" {{ old('status', $job->status) == 'open' ? 'selected' : '' }}>Open
                             </option>
                             <option value="in_progress"
@@ -126,17 +148,21 @@
                         </select>
                     </div>
 
-                    {{-- Location --}}
-                    <div class="mb-3">
-                        <label for="location" class="form-label">Location</label>
-                        <input type="text" name="location" id="location" class="form-control"
-                            value="{{ old('location', $job->location) }}" required>
+                    <!-- Location -->
+                    <div class="space-y-2">
+                        <label for="location" class="text-lg font-medium text-gray-700">Location</label>
+                        <input type="text" name="location" id="location"
+                            value="{{ old('location', $job->location) }}"
+                            class="w-full border-2 border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-teal-600 focus:border-teal-600 text-lg"
+                            required>
                     </div>
 
-                    {{-- Experience Level --}}
-                    <div class="mb-3">
-                        <label class="form-label">Experience Level</label>
-                        <select name="experience_level" id="experience_level" class="form-control" required>
+                    <!-- Experience Level -->
+                    <div class="space-y-2">
+                        <label for="experience_level" class="text-lg font-medium text-gray-700">Experience Level</label>
+                        <select name="experience_level" id="experience_level"
+                            class="w-full border-2 border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-teal-600 focus:border-teal-600 text-lg"
+                            required>
                             <option value="entry"
                                 {{ old('experience_level', $job->experience_level) == 'entry' ? 'selected' : '' }}>Entry
                             </option>
@@ -149,10 +175,12 @@
                         </select>
                     </div>
 
-                    {{-- Payment Method --}}
-                    <div class="mb-3">
-                        <label class="form-label">Payment Method</label>
-                        <select name="payment_method" id="payment_method" class="form-control" required>
+                    <!-- Payment Method -->
+                    <div class="space-y-2">
+                        <label for="payment_method" class="text-lg font-medium text-gray-700">Payment Method</label>
+                        <select name="payment_method" id="payment_method"
+                            class="w-full border-2 border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-teal-600 focus:border-teal-600 text-lg"
+                            required>
                             <option value="escrow"
                                 {{ old('payment_method', $job->payment_method) == 'escrow' ? 'selected' : '' }}>Escrow
                             </option>
@@ -165,24 +193,25 @@
                         </select>
                     </div>
 
-                    {{-- Hires Needed --}}
-                    <div class="mb-3">
-                        <label for="hires_needed" class="form-label">Number of Freelancers Needed</label>
-                        <input type="number" name="hires_needed" id="hires_needed" class="form-control"
-                            value="{{ old('hires_needed', $job->hires_needed) }}" required min="1">
+                    <!-- Hires Needed -->
+                    <div class="space-y-2">
+                        <label for="hires_needed" class="text-lg font-medium text-gray-700">Number of Freelancers
+                            Needed</label>
+                        <input type="number" name="hires_needed" id="hires_needed"
+                            value="{{ old('hires_needed', $job->hires_needed) }}" min="1"
+                            class="w-full border-2 border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-teal-600 focus:border-teal-600 text-lg"
+                            required>
                     </div>
                 </div>
             </div>
 
-            {{-- Submit Button --}}
-            <button type="submit" class="btn btn-primary w-100">Update Job</button>
+
         </form>
     </div>
 
 @section('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Set project deadline min date based on application deadline
             const appDeadline = document.getElementById('application_deadline');
             const projectDeadline = document.getElementById('project_deadline');
 

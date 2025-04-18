@@ -1,86 +1,122 @@
 @extends('backend.admin.master')
 
 @section('content')
-<div class="container mt-4">
-    <div class="card shadow-lg p-4" style="max-width: 600px; margin: auto; border-radius: 15px;">
-        <h2 class="text-center fw-bold mb-4">Edit Freelancer Profile</h2>
+    <div class="min-h-screen  py-12 px-4 flex justify-center items-start">
+        <div class="w-full max-w-2xl bg-gray-100 shadow-2xl rounded-xl p-8 md:p-10">
 
-        <form action="{{ route('freelancer.update', ['id' => $freelancerProfile->id]) }}" 
-              method="POST" enctype="multipart/form-data">
-            @csrf
-            @method('PUT')
-            {{-- work on this section also --}}
+            <h2 class="text-3xl font-bold text-center text-[rgba(120,186,192,1)] mb-8">
+                ✏️ Edit Freelancer Profile
+            </h2>
 
-            <!-- Profile Picture Upload -->
-            <div class="text-center mb-3">
-                @php
-                    $profilePicture = $freelancerProfile->profile_picture 
-                        ? asset('storage/' . $freelancerProfile->profile_picture) 
-                        : asset('images/1.jpg');
-                @endphp
-                <img src="{{ $profilePicture }}" alt="Profile Picture" 
-                     class="rounded-circle border shadow-sm mb-2" width="120" height="120">
-                <input type="file" name="profile_picture" class="form-control mt-2">
-            </div>
+            <form action="{{ route('freelancer.update', ['id' => $freelancerProfile->id]) }}" method="POST"
+                  enctype="multipart/form-data" class="space-y-6">
+                @csrf
+                @method('PUT')
 
-            <!-- Skills -->
-            <div class="mb-3">
-                <label class="form-label fw-bold">Skills</label>
-                <textarea name="skills" class="form-control" required>{{ $freelancerProfile->skills }}</textarea>
-            </div>
+                {{-- Profile Picture --}}
+                <div class="text-center">
+                    @php
+                        $profilePicture = auth()->user()->profile_picture
+                            ? asset('storage/' . auth()->user()->profile_picture)
+                            : asset('images/default-avatar.jpg');
+                    @endphp
 
-            <!-- Hourly Rate -->
-            <div class="mb-3">
-                <label class="form-label fw-bold">Hourly Rate ($)</label>
-                <input type="number" name="hourly_rate" class="form-control" required 
-                       value="{{ $freelancerProfile->hourly_rate }}">
-            </div>
+                    <img id="previewImage" src="{{ $profilePicture }}" alt="Profile Picture"
+                         class="w-28 h-28 rounded-full object-cover border-4 border-[rgba(120,186,192,1)] mx-auto shadow mb-3" />
 
-            <!-- Availability -->
-            <div class="mb-3">
-                <label class="form-label fw-bold">Availability</label>
-                <select name="availability" class="form-control" required>
-                    <option value="available" {{ $freelancerProfile->availability == 'available' ? 'selected' : '' }}>Available</option>
-                    <option value="busy" {{ $freelancerProfile->availability == 'busy' ? 'selected' : '' }}>Busy</option>
-                    <option value="offline" {{ $freelancerProfile->availability == 'offline' ? 'selected' : '' }}>Offline</option>
-                </select>
-            </div>
+                    <label class="block text-gray-700 font-medium mb-1">Change Profile Picture</label>
+                    <input type="file" name="profile_picture" accept="image/*" onchange="previewFile(this)"
+                           class="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4
+                                  file:rounded-full file:border-0 file:text-sm file:font-semibold
+                                  file:bg-[rgba(120,186,192,0.1)] file:text-[rgba(120,186,192,1)] hover:file:bg-[rgba(120,186,192,0.2)]" />
+                </div>
 
-            <!-- Bio -->
-            <div class="mb-3">
-                <label class="form-label fw-bold">Bio</label>
-                <textarea name="bio" class="form-control">{{ $freelancerProfile->bio }}</textarea>
-            </div>
+                {{-- Skills --}}
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">Skills</label>
+                    <textarea name="skills" required
+                              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[rgba(120,186,192,1)] resize-y">
+                        {{ old('skills', $freelancerProfile->skills) }}
+                    </textarea>
+                </div>
 
-            <!-- Experience -->
-            <div class="mb-3">
-                <label class="form-label fw-bold">Experience</label>
-                <input type="text" name="experience" class="form-control" value="{{ $freelancerProfile->experience }}">
-            </div>
+                {{-- Hourly Rate --}}
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">Hourly Rate ($)</label>
+                    <input type="number" name="hourly_rate" required
+                           value="{{ old('hourly_rate', $freelancerProfile->hourly_rate) }}"
+                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[rgba(120,186,192,1)]" />
+                </div>
 
-            <!-- Portfolio Link -->
-            <div class="mb-3">
-                <label class="form-label fw-bold">Portfolio Link</label>
-                <input type="url" name="portfolio_link" class="form-control" value="{{ $freelancerProfile->portfolio_link }}">
-            </div>
+                {{-- Availability --}}
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">Availability</label>
+                    <select name="availability" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[rgba(120,186,192,1)]">
+                        <option value="available" {{ $freelancerProfile->availability == 'available' ? 'selected' : '' }}>
+                            Available</option>
+                        <option value="busy" {{ $freelancerProfile->availability == 'busy' ? 'selected' : '' }}>Busy</option>
+                        <option value="offline" {{ $freelancerProfile->availability == 'offline' ? 'selected' : '' }}>
+                            Offline</option>
+                    </select>
+                </div>
 
-            <!-- Rating -->
-            <div class="mb-3">
-                <label class="form-label fw-bold">Rating</label>
-                <input type="number" name="rating" class="form-control" min="0" max="5" step="0.1" 
-                       value="{{ $freelancerProfile->rating }}">
-            </div>
+                {{-- Bio --}}
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">Bio</label>
+                    <textarea name="bio"
+                              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[rgba(120,186,192,1)] resize-y">
+                        {{ old('bio', $freelancerProfile->bio) }}
+                    </textarea>
+                </div>
 
-            <!-- Submit & Cancel Buttons -->
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary">
-                    <i class="bi bi-save"></i> Update Profile
-                </button>
-                <a href="{{ route('dashboard') }}" class="btn btn-secondary">
-                    <i class="bi bi-arrow-left"></i> Cancel
-                </a>
-            </div>
-        </form>
+                {{-- Experience --}}
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">Experience</label>
+                    <input type="text" name="experience"
+                           value="{{ old('experience', $freelancerProfile->experience) }}"
+                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[rgba(120,186,192,1)]" />
+                </div>
+
+                {{-- Portfolio --}}
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">Portfolio Link</label>
+                    <input type="url" name="portfolio_link"
+                           value="{{ old('portfolio_link', $freelancerProfile->portfolio_link) }}"
+                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[rgba(120,186,192,1)]" />
+                </div>
+
+                {{-- Rating --}}
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">Rating</label>
+                    <input type="number" name="rating" step="0.1" min="0" max="5"
+                           value="{{ old('rating', $freelancerProfile->rating) }}"
+                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[rgba(120,186,192,1)]" />
+                </div>
+
+                {{-- Buttons --}}
+                <div class="flex justify-center gap-4 pt-6">
+                    <button type="submit"
+                            class="bg-[rgba(120,186,192,1)] hover:bg-[rgba(100,160,165,1)] text-white px-6 py-2 rounded-full transition font-semibold">
+                        💾 Update Profile
+                    </button>
+                    <a href="{{ route('dashboard') }}"
+                       class="border border-gray-400 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-100 transition">
+                        ⬅️ Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
+
+    {{-- Preview image script --}}
+    <script>
+        function previewFile(input) {
+            const file = input.files[0];
+            if (file) {
+                const preview = document.getElementById('previewImage');
+                preview.src = URL.createObjectURL(file);
+            }
+        }
+    </script>
 @endsection

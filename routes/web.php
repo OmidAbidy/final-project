@@ -4,6 +4,8 @@ use App\Http\Controllers\ClientJobController;
 use App\Http\Controllers\ClientProfileController;
 use App\Http\Controllers\FreelancerController;
 use App\Http\Controllers\FreelancerProfileController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\UserController;
@@ -128,5 +130,17 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/admin/proposals/{proposal}/admin-status', [ProposalController::class, 'adminUpdateStatus'])->name('admin.proposals.updateStatus');
 });
 
+
+// -------------------Messages ----------------------//
+Route::middleware('auth')->group(function () {
+    Route::get('/jobs/{job}/messages', [MessageController::class, 'index'])->name('messages.show');
+    Route::post('/jobs/{job}/messages', [MessageController::class, 'store'])->name('messages.send');
+    Route::get('/jobs/messages', [MessageController::class, 'demo'])->name('messages.demo');
+});
+
+
+Route::middleware('auth')->group(function (){
+    Route::get('/payments', [PaymentController::class, 'index'])->name('payments.index');
+});
 
 require __DIR__ . '/auth.php';

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\FreelancerProfile;
+use Illuminate\Support\Facades\Storage;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -42,6 +44,9 @@ class FreelancerProfileController extends Controller
             'rating' => 'nullable|numeric|min:0|max:5',
         ]);
 
+
+
+
         FreelancerProfile::create([
             'user_id' => Auth::id(),
             'skills' => $request->skills,
@@ -52,6 +57,19 @@ class FreelancerProfileController extends Controller
             'portfolio_link' => $request->portfolio_link,
             'rating' => $request->rating,
         ]);
+
+        if ($request->hasFile('profile_picture')) {
+            $path = $request->file('profile_picture')->store('profile_pictures', 'public');
+            $user = auth()->user();
+
+            // Delete old profile picture if exists
+            if ($user->profile_picture) {
+                Storage::disk('public')->delete($user->profile_picture);
+            }
+
+            $user->profile_picture = $path;
+            $user->save();
+        }
 
         return redirect()->route('freelancer.profile')->with('success', 'Profile created successfully.');
     }
@@ -85,7 +103,23 @@ class FreelancerProfileController extends Controller
             return redirect()->route('freelancer.create')->with('error', 'Freelancer profile not found.');
         }
 
+        // Update profile picture in User model
+        if ($request->hasFile('profile_picture')) {
+            $user = auth()->user();
+
+            if ($user->profile_picture) {
+                Storage::disk('public')->delete($user->profile_picture);
+            }
+
+            $path = $request->file('profile_picture')->store('profile_pictures', 'public');
+            $user->profile_picture = $path;
+            $user->save();
+        }
+
         $freelancerProfile->update($request->all());
+
+
+
 
         return redirect()->route('freelancer.profile')->with('success', 'Profile updated successfully.');
     }
