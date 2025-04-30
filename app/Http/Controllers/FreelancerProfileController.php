@@ -123,4 +123,6 @@ class FreelancerProfileController extends Controller
 
         return redirect()->route('freelancer.profile')->with('success', 'Profile updated successfully.');
     }
+
+    
 }

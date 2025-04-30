@@ -1,3 +1,6 @@
+
+
+
 <nav class="navbar navbar-expand-lg">
     <div class="container">
         <a class="navbar-brand" href="{{ route('home') }}">Karnema</a>
@@ -36,23 +39,20 @@
                     </li>
                 @endif
                 @endauth
-
-               
-               
             </ul>
-        </div>
-
-        <div class="language-button-div">
-            <div class="nav-icons dropdown">
-                <button class="btn dropdown-toggle" style="color: black;" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa-solid fa-flag-usa"></i> 
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-flag"></i> Pashto</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-flag"></i> Dari</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-flag-usa"></i> English</a></li>
-                </ul>
+            
+            <div class="language-button-div">
+                <div class="nav-icons dropdown">
+                    <button class="btn dropdown-toggle" style="color: black;" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-flag-usa"></i> 
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-flag"></i> Pashto</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-flag"></i> Dari</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-flag-usa"></i> English</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
+        </div>       
     </div>
 </nav>

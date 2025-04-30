@@ -15,13 +15,16 @@
 </head>
 
 <body class="bg-[rgba(173,211,214,0.7)] dark:bg-gray-900 min-h-screen font-roboto">
-    <!-- Mobile menu toggle -->
-    <div class="md:hidden mb-2 pt-4 pl-4">
-        <button id="sidebar-toggle" class="p-2 bg-[rgba(120,186,192,0.7)] text-white rounded-md">
-            <i class="fas fa-bars"></i> Menu
-        </button>
-    </div>
+
     <div class="flex min-h-screen">
+
+        <!-- Inside main content area -->
+        <div class="md:hidden">
+            <button id="sidebar-toggle" class="fixed top-1 left-1 z-[100] py-1 px-3 bg-cyan-700 text-white rounded-md">
+                <i class="fas fa-bars"></i> Menu
+            </button>
+        </div>
+
         <!-- Sidebar with fixed position -->
         <div id="sidebar"
             class="w-64 bg-white dark:bg-gray-800 shadow-lg fixed top-0 left-0 h-screen z-50 md:z-0 md:translate-x-0 transform -translate-x-full md:block transition-transform duration-300 ease-in-out overflow-y-auto">
@@ -63,7 +66,7 @@
                         class="flex items-center px-6 py-3 text-cyan-800 dark:text-gray-200 hover:bg-[rgba(120,186,192,0.7)] hover:text-white dark:hover:bg-[rgba(120,186,192,0.7)] transition-colors duration-200 {{ Route::is('client.projects') ? 'bg-[rgba(120,186,192,0.7)] text-white dark:bg-[rgba(120,186,192,0.7)]' : '' }}">
                         <i class="fas fa-briefcase mr-3"></i> Projects
                     </a>
-                    <a href="{{ route('messages.demo') }}"
+                    <a href="{{ route('messages.list') }}"
                         class="flex items-center px-6 py-3 text-cyan-800 dark:text-gray-200 hover:bg-[rgba(120,186,192,0.7)] hover:text-white dark:hover:bg-[rgba(120,186,192,0.7)] transition-colors duration-200 {{ Route::is('client.messages') ? 'bg-[rgba(120,186,192,0.7)] text-white dark:bg-[rgba(120,186,192,0.7)]' : '' }}">
                         <i class="fas fa-envelope mr-3"></i> Messages
                     </a>
@@ -74,6 +77,10 @@
                     <a href="{{ route('proposals.index') }}"
                         class="flex items-center px-6 py-3 text-cyan-800 dark:text-gray-200 hover:bg-[rgba(120,186,192,0.7)] hover:text-white dark:hover:bg-[rgba(120,186,192,0.7)] transition-colors duration-200 {{ Route::is('proposals.index') ? 'bg-[rgba(120,186,192,0.7)] text-white dark:bg-[rgba(120,186,192,0.7)]' : '' }}">
                         <i class="fas fa-file-alt mr-3"></i>view Proposals
+                    </a>
+                    <a href="{{ route('freelancer.visit') }}"
+                        class="flex items-center px-6 py-3 text-cyan-800 dark:text-gray-200 hover:bg-[rgba(120,186,192,0.7)] hover:text-white dark:hover:bg-[rgba(120,186,192,0.7)] transition-colors duration-200 {{ Route::is('freelancer.visit') ? 'bg-[rgba(120,186,192,0.7)] text-white dark:bg-[rgba(120,186,192,0.7)]' : '' }}">
+                        <i class="fas fa-file-alt mr-3"></i>Find Freelancer
                     </a>
                 @endcan
 
@@ -88,9 +95,9 @@
                     </a>
                     <a href="{{ route('freelancer.jobs.index') }}"
                         class="flex items-center px-6 py-3 text-cyan-800 dark:text-gray-200 hover:bg-[rgba(120,186,192,0.7)] hover:text-white dark:hover:bg-[rgba(120,186,192,0.7)] transition-colors duration-200 {{ Route::is('freelancer.jobs.index') ? 'bg-[rgba(120,186,192,0.7)] text-white dark:bg-[rgba(120,186,192,0.7)]' : '' }}">
-                        <i class="fas fa-briefcase mr-3"></i> View Jobs
+                        <i class="fas fa-briefcase mr-3"></i> Find Jobs
                     </a>
-                    <a href="{{ route('messages.demo') }}"
+                    <a href="{{ route('messages.list') }}"
                         class="flex items-center px-6 py-3 text-cyan-800 dark:text-gray-200 hover:bg-[rgba(120,186,192,0.7)] hover:text-white dark:hover:bg-[rgba(120,186,192,0.7)] transition-colors duration-200 {{ Route::is('client.messages') ? 'bg-[rgba(120,186,192,0.7)] text-white dark:bg-[rgba(120,186,192,0.7)]' : '' }}">
                         <i class="fas fa-envelope mr-3"></i> Messages
                     </a>

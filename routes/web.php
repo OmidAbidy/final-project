@@ -27,10 +27,11 @@ Route::view('BReg', 'auth.BeforeReg')->name('BReg');
 // Protected Routes (Requires Authentication)
 Route::middleware(['auth', 'verified'])->group(function () {
     // Freelancer Profile Management
+    Route::get('/freelancer', [FreelancerController::class, 'show'])->name('freelancer.visit');
+    Route::get('/freelancer/{id}', [FreelancerController::class, 'publicshow'])->name('freelancer.publicShow');
 
     // Dashboard
     Route::view('/dashboard', 'backend.admin.dashboard')->name('dashboard');
-
     // Admin Routes (Only for User Management & Settings)
     Route::prefix('backend/admin')->name('admin.')->group(function () {
         // User Management (Only Admin)
@@ -70,7 +71,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/edit', [FreelancerProfileController::class, 'edit'])->name('edit');
         Route::put('/update', [FreelancerProfileController::class, 'update'])->name('update');
     });
-
     // Freelancer Profile Routes
     Route::middleware('can:isfreelancer')->prefix('backend/freelancer/')->name('freelancer.jobs.')->group(function () {
         // Freelancer job proposals
@@ -133,10 +133,14 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 // -------------------Messages ----------------------//
 Route::middleware('auth')->group(function () {
+    Route::get('/jobs/messages/list', [MessageController::class, 'messageList'])->name('messages.list');
     Route::get('/jobs/{job}/messages', [MessageController::class, 'index'])->name('messages.show');
     Route::post('/jobs/{job}/messages', [MessageController::class, 'store'])->name('messages.send');
-    Route::get('/jobs/messages', [MessageController::class, 'demo'])->name('messages.demo');
+    
+
+    
 });
+
 
 
 Route::middleware('auth')->group(function (){

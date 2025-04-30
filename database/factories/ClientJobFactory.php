@@ -30,8 +30,8 @@ class ClientJobFactory extends Factory
             'is_negotiable' => $this->faker->boolean(),
             'application_deadline' => now()->addDays(rand(5, 30)),
             'project_deadline' => now()->addMonths(rand(1, 6)),
-            'status' => $this->faker->randomElement(['open', 'in_progress', 'completed', 'cancelled']), //'in_progress', 'completed', 'cancelled' later also add them
-            'visibility' => $this->faker->randomElement(['public', 'invite_only', 'private']), //, 'invite_only' ,private later also add them
+            'status' => $this->faker->randomElement(['open', 'in_progress']), //'in_progress', 'completed', 'cancelled' later also add them
+            'visibility' => $this->faker->randomElement(['public', 'invite_only']), //, 'invite_only' ,private later also add them
             'location' => $this->faker->randomElement(['Remote', 'On-Site', 'Hybrid']),
             'experience_level' => $this->faker->randomElement(['entry', 'intermediate', 'expert']),
             'payment_method' => $this->faker->randomElement(['escrow', 'milestone', 'on_completion']),

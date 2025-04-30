@@ -147,6 +147,15 @@
                             </option>
                         </select>
                     </div>
+                    {{-- this section visibility is not correctly set up --}}
+                    <div>
+                        <label for="visibility" class="block text-white font-medium mb-1">Visibility</label>
+                        <select name="visibility" id="visibility" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-white" required>
+                            <option value="public">Public</option>
+                            <option value="private">Private</option>
+                            <option value="invite_only">Invite Only</option>
+                        </select>
+                    </div>
 
                     <!-- Location -->
                     <div class="space-y-2">

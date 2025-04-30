@@ -14,13 +14,8 @@
    background-color: rgba(177, 219, 223, 0.7);
    padding: 10px 20px;
    color: black;
-   transition: padding 0.5s ease-in-out;
 }
 
-.navbar-brand:hover {
-   padding: 10px 35px;
-   margin-right: -20px;
-}
 
 /* Navbar navigation styling */
 .navbar-nav {
@@ -59,11 +54,6 @@
    margin-left: -25px;
 }
 
-/* Search icon styling */
-.search-button-div i {
-   color: black;
-   font-size: 18px;
-}
 
 /* Navbar flex container */
 .container {
@@ -73,13 +63,6 @@
    gap: 15px;
 }
 
-/* Responsive adjustments */
-@media (max-width: 1000px) {
-   .search-button-div {
-       display: none; /* Hide search icon on small screens */
-   }
-}
-
 /* Navbar toggler */
 .navbar-toggler {
    background-color: rgba(177, 219, 223, 0.7);
@@ -87,10 +70,10 @@
 }
 
 .navbar-toggler-icon {
-   filter: invert(1);
+   filter: invert(0);
    transition: transform 0.3s ease-in-out;
 }
 
 .navbar-toggler:hover .navbar-toggler-icon {
-   transform: rotate(90deg);
+   transform: rotate(180deg);
 }

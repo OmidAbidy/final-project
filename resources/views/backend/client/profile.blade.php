@@ -5,12 +5,12 @@
     @if($clientProfile)
         <div class="max-w-3xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
             <!-- Profile Picture Section -->
-            <div class="bg-gray-50 dark:bg-gray-700 p-6 flex flex-col items-center">
-                <img class="h-24 w-24 rounded-full object-cover border-4 border-[rgba(120,186,192,0.7)] dark:border-[rgba(120,186,192,0.7)]" 
+            <div class="bg-gradient-to-br from-cyan-800 to-cyan-900 dark:bg-gray-700 p-6 flex flex-col items-center">
+                <img class="h-24 w-24 rounded-full object-cover border-4 border-white dark:white shadow-lg" 
                      src="{{ auth()->user()->profile_picture ? Storage::url(auth()->user()->profile_picture) : 'https://via.placeholder.com/150' }}" 
                      alt="Profile Picture">
-                <h2 class="mt-4 text-xl font-bold text-gray-900 dark:text-white">{{ $clientProfile->company_name }}</h2>
-                <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">Client Profile</p>
+                <h2 class="mt-4 text-xl font-bold text-white dark:text-black">{{ $clientProfile->company_name }}</h2>
+                <p class="mt-1 text-sm text-white dark:text-gray-600">Client Profile</p>
             </div>
             <!-- Client Details Section -->
             <div class="p-6">

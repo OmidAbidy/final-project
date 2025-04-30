@@ -23,6 +23,7 @@ class NewMessage implements ShouldBroadcast
     public function broadcastOn()
     {
         return new Channel('ClientJob.' . $this->message->receiver_id);
+        
     }
 
     public function broadcastWith()

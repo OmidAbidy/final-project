@@ -15,7 +15,7 @@
                         @endphp
 
                         <img src="{{ $profilePicture }}" alt="Profile Picture"
-                             class="w-32 h-32 object-cover rounded-full border-4 border-white shadow-md">
+                             class="w-32 h-32 object-cover rounded-full border-4 border-white dark:border-white shadow-md">
 
                         <div class="text-center text-black">
                             <h2 class="text-2xl font-bold">{{ auth()->user()->name }}</h2>
